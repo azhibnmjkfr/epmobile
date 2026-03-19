@@ -55,7 +55,6 @@
             z-index: -1;
             background-color: var(--bg-color);
             background-image: 
-                /* Diagonal stripes pattern - soft green */
                 repeating-linear-gradient(
                     -45deg,
                     transparent,
@@ -70,7 +69,6 @@
                     rgba(35, 70, 38, 0.015) 30px,
                     rgba(35, 70, 38, 0.015) 31px
                 ),
-                /* Subtle gradient overlays */
                 radial-gradient(at 0% 0%, rgba(35, 70, 38, 0.04) 0px, transparent 50%),
                 radial-gradient(at 100% 100%, rgba(212, 175, 55, 0.04) 0px, transparent 50%);
         }
@@ -324,6 +322,9 @@
             text-align: center;
             border: 1px solid var(--card-border);
             transition: all 0.25s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .feature-item:hover {
@@ -761,34 +762,34 @@
             <!-- Features Grid -->
             <h3 class="section-title"><i class="fa-solid fa-grid-2"></i> Features</h3>
             <div class="features-grid">
-                <div class="feature-item">
+                <a href="https://azhibnmjkfr.github.io/epmobile/jurnal/" class="feature-item">
                     <div class="feature-icon">
                         <i class="fa-solid fa-book-open"></i>
                     </div>
                     <div class="feature-title">Jurnal Kelas</div>
                     <div class="feature-desc">Teaching logs & attendance</div>
-                </div>
-                <div class="feature-item">
+                </a>
+                <a href="https://azhibnmjkfr.github.io/epmobile/morphea/" class="feature-item">
                     <div class="feature-icon">
                         <i class="fa-solid fa-images"></i>
                     </div>
                     <div class="feature-title">Morphea</div>
                     <div class="feature-desc">Class photo gallery</div>
-                </div>
-                <div class="feature-item highlight">
+                </a>
+                <a href="https://azhibnmjkfr.github.io/epmobile/ess/" class="feature-item highlight">
                     <div class="feature-icon">
                         <i class="fa-solid fa-graduation-cap"></i>
                     </div>
                     <div class="feature-title">ESS</div>
                     <div class="feature-desc">Student score analytics</div>
-                </div>
-                <div class="feature-item">
+                </a>
+                <a href="#" class="feature-item" onclick="showAssessmentPage(); return false;">
                     <div class="feature-icon">
                         <i class="fa-solid fa-file-alt"></i>
                     </div>
                     <div class="feature-title">Assessment</div>
                     <div class="feature-desc">PTS & PAS management</div>
-                </div>
+                </a>
             </div>
 
             <!-- About Me Section -->
@@ -833,7 +834,7 @@
 
             <div class="assessment-buttons">
                 <!-- PTS Button -->
-                <a href="https://azhibnmjkfr.github.io/rekap-data-pts-ganjil/" target="_blank" class="assessment-btn">
+                <a href="https://azhibnmjkfr.github.io/epmobile/assesment/pts/" class="assessment-btn">
                     <div class="assessment-btn-icon">
                         <i class="fa-solid fa-file-contract"></i>
                     </div>
@@ -847,7 +848,7 @@
                 </a>
 
                 <!-- PAS Button -->
-                <a href="#" target="_blank" class="assessment-btn">
+                <a href="#" class="assessment-btn">
                     <div class="assessment-btn-icon">
                         <i class="fa-solid fa-file-signature"></i>
                     </div>
@@ -866,26 +867,26 @@
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
         <div class="bottom-nav-inner">
-            <div class="nav-item active" data-page="home">
+            <a href="https://azhibnmjkfr.github.io/epmobile/" class="nav-item active" id="nav-home">
                 <i class="fa-solid fa-home"></i>
                 <span>Home</span>
-            </div>
-            <a href="https://azhibnmjkfr.github.io/Kegiatan-Kelas-MTsTDTI-2025-2026/" target="_blank" class="nav-item">
+            </a>
+            <a href="https://azhibnmjkfr.github.io/epmobile/jurnal/" class="nav-item" id="nav-jurnal">
                 <i class="fa-solid fa-book-open"></i>
                 <span>Jurnal</span>
             </a>
-            <a href="https://azhibnmjkfr.github.io/MorpheaDTI/" target="_blank" class="nav-item">
+            <a href="https://azhibnmjkfr.github.io/epmobile/morphea/" class="nav-item" id="nav-morphea">
                 <i class="fa-solid fa-images"></i>
                 <span>Morphea</span>
             </a>
-            <a href="https://azhibnmjkfr.github.io/english-scores-system/" target="_blank" class="nav-item highlight">
+            <a href="https://azhibnmjkfr.github.io/epmobile/ess/" class="nav-item highlight" id="nav-ess">
                 <i class="fa-solid fa-graduation-cap"></i>
                 <span>ESS</span>
             </a>
-            <div class="nav-item" data-page="assessment">
+            <a href="#" class="nav-item" id="nav-assessment" onclick="showAssessmentPage(); return false;">
                 <i class="fa-solid fa-file-alt"></i>
                 <span>Assessment</span>
-            </div>
+            </a>
         </div>
     </nav>
 
@@ -896,22 +897,28 @@
 
     <script>
         // --- Navigation Logic ---
-        const navItems = document.querySelectorAll('.nav-item[data-page]');
         const pages = document.querySelectorAll('.page');
+        const navItems = document.querySelectorAll('.nav-item');
 
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const targetPage = item.getAttribute('data-page');
-                
-                navItems.forEach(nav => nav.classList.remove('active'));
-                item.classList.add('active');
-                
-                pages.forEach(page => page.classList.remove('active'));
-                document.getElementById(`page-${targetPage}`).classList.add('active');
-                
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
+        function showAssessmentPage() {
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById('page-assessment').classList.add('active');
+            
+            navItems.forEach(nav => nav.classList.remove('active'));
+            document.getElementById('nav-assessment').classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showHomePage() {
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById('page-home').classList.add('active');
+            
+            navItems.forEach(nav => nav.classList.remove('active'));
+            document.getElementById('nav-home').classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         // --- Dynamic Greeting ---
         function updateGreeting() {
