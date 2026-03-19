@@ -3,29 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>EduPortal | English Department Hub</title>
+    <title>Jurnal Kelas | EduPortal</title>
     
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
+            /* Tema Khas EduPortal */
             --primary: #234626;
+            --primary-dark: #1a351d;
             --primary-light: #2f5e33;
             --accent: #D4AF37;
-            --accent-light: #e6c656;
+            --accent-hover: #b5952f;
             --bg-color: #F8FAFC;
             --text-main: #1E293B;
             --text-muted: #64748B;
+            --white: #FFFFFF;
             --card-bg: rgba(255, 255, 255, 0.95);
             --card-border: rgba(35, 70, 38, 0.08);
-            --nav-bg: #FFFFFF;
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
             --shadow-md: 0 8px 24px rgba(35, 70, 38, 0.12);
-            --shadow-glow: 0 4px 20px rgba(212, 175, 55, 0.3);
         }
 
         * {
@@ -40,12 +43,10 @@
             color: var(--text-main);
             line-height: 1.6;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            padding-bottom: 85px;
+            padding-bottom: 2rem;
         }
 
-        /* --- Background Pattern --- */
+        /* --- Background Pattern (Tema Khas EduPortal) --- */
         .bg-pattern {
             position: fixed;
             top: 0;
@@ -75,7 +76,7 @@
                 radial-gradient(at 100% 100%, rgba(212, 175, 55, 0.04) 0px, transparent 50%);
         }
 
-        /* --- Mobile Header --- */
+        /* --- Mobile Header (EduPortal Style) --- */
         .mobile-header {
             background: var(--primary);
             color: white;
@@ -120,86 +121,76 @@
             letter-spacing: 0.3px;
         }
 
-        /* --- Page Container --- */
-        .page {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- HOME PAGE --- */
-        .home-container {
-            padding: 1.5rem 1.25rem;
-        }
-
-        /* Greeting Section */
-        .greeting-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .greeting-time {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .greeting-name {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-top: 0.2rem;
-        }
-
-        .greeting-role {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 0.15rem;
-        }
-
-        /* Hero Card */
-        .hero-card {
-            background: linear-gradient(145deg, var(--primary) 0%, #1a351d 100%);
-            border-radius: 20px;
-            padding: 1.5rem;
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
             color: white;
-            margin-bottom: 1.5rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 0.5rem 0.85rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateX(-3px);
+        }
+
+        /* --- Main Container --- */
+        .container {
+            max-width: 1400px;
+            margin: 1rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--card-border);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        /* --- Page Header Card --- */
+        .page-header {
+            background: linear-gradient(145deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 1.5rem;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(35, 70, 38, 0.25);
         }
 
-        .hero-card::before {
+        .page-header::before {
             content: '';
             position: absolute;
             top: -30%;
             right: -20%;
             width: 180px;
             height: 180px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
             pointer-events: none;
         }
 
-        .hero-card::after {
-            content: '\f19d';
+        .page-header::after {
+            content: '\f02d';
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
             position: absolute;
-            bottom: -15px;
+            bottom: -10px;
             right: 15px;
-            font-size: 6rem;
-            color: rgba(255, 255, 255, 0.06);
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.05);
         }
 
-        .hero-badge {
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
@@ -209,374 +200,185 @@
             border-radius: 50px;
             font-size: 0.7rem;
             font-weight: 600;
-            margin-bottom: 0.85rem;
+            margin-bottom: 0.75rem;
             border: 1px solid rgba(212, 175, 55, 0.25);
         }
 
-        .hero-title {
+        .page-title {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.35rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 0.4rem;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 0.5rem;
         }
 
-        .hero-subtitle {
-            font-size: 0.85rem;
-            opacity: 0.85;
-            line-height: 1.6;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-stats {
+        .page-meta {
             display: flex;
-            gap: 1.5rem;
-            margin-top: 1.25rem;
-            padding-top: 1.25rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-stat {
-            text-align: center;
-        }
-
-        .hero-stat-value {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .hero-stat-label {
-            font-size: 0.65rem;
-            opacity: 0.7;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* About Section */
-        .about-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .section-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .section-title i {
-            font-size: 0.85rem;
-            color: var(--accent);
-        }
-
-        .about-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 1.25rem;
-            border: 1px solid var(--card-border);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .about-text {
-            font-size: 0.85rem;
-            color: var(--text-main);
-            line-height: 1.75;
-        }
-
-        .about-text strong {
-            color: var(--primary);
-        }
-
-        .about-highlight {
-            background: linear-gradient(135deg, rgba(35, 70, 38, 0.06) 0%, rgba(212, 175, 55, 0.06) 100%);
-            padding: 1rem;
-            border-radius: 12px;
-            border-left: 3px solid var(--accent);
-            margin-top: 1rem;
-        }
-
-        .about-highlight .about-text {
-            margin: 0;
-        }
-
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.85rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-item {
-            background: var(--card-bg);
-            border-radius: 14px;
-            padding: 1.1rem;
-            text-align: center;
-            border: 1px solid var(--card-border);
-            transition: all 0.25s ease;
-        }
-
-        .feature-item:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .feature-icon {
-            width: 44px;
-            height: 44px;
-            background: rgba(35, 70, 38, 0.08);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin: 0 auto 0.65rem auto;
-        }
-
-        /* ESS Feature Highlight */
-        .feature-item.highlight {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.03) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .feature-item.highlight .feature-icon {
-            background: linear-gradient(135deg, var(--accent) 0%, #b5952f 100%);
-            color: white;
-        }
-
-        .feature-title {
-            font-family: 'Poppins', sans-serif;
+            flex-wrap: wrap;
+            gap: 1rem;
             font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.15rem;
+            opacity: 0.9;
         }
 
-        .feature-item.highlight .feature-title {
-            color: #9a7b1e;
-        }
-
-        .feature-desc {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-        }
-
-        /* About Me Section */
-        .about-me-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .about-me-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 1.25rem;
-            border: 1px solid var(--card-border);
-            box-shadow: var(--shadow-sm);
-            display: flex;
+        .page-meta span {
+            display: inline-flex;
             align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.25s ease;
+            gap: 0.4rem;
         }
 
-        .about-me-card:hover {
-            border-color: var(--accent);
-            transform: translateX(3px);
-        }
-
-        .about-me-avatar {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--primary) 0%, #1a351d 100%);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .about-me-content {
-            flex: 1;
-        }
-
-        .about-me-name {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .about-me-role {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 0.15rem;
-        }
-
-        .about-me-link {
-            font-size: 0.7rem;
+        .page-meta i {
             color: var(--accent);
-            margin-top: 0.25rem;
+        }
+
+        /* --- Filters --- */
+        .filters-wrapper {
+            padding: 1rem;
+            background: var(--white);
+            border-bottom: 1px solid var(--card-border);
             display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
             align-items: center;
-            gap: 0.3rem;
         }
 
-        .about-me-arrow {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 1.25rem 1rem;
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            border-top: 1px solid rgba(0,0,0,0.04);
-            background: var(--card-bg);
-        }
-
-        .footer strong {
-            color: var(--primary);
-        }
-
-        .footer-version {
-            margin-top: 0.35rem;
-            opacity: 0.6;
-        }
-
-        /* --- ASSESSMENT PAGE --- */
-        .assessment-container {
-            padding: 1.5rem 1.25rem;
-        }
-
-        .assessment-header {
-            margin-bottom: 1.5rem;
-        }
-
-        .assessment-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--primary) 0%, #1a351d 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            margin-bottom: 1rem;
-            box-shadow: 0 6px 20px rgba(35, 70, 38, 0.2);
-        }
-
-        .assessment-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .assessment-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 0.4rem;
-            line-height: 1.65;
-        }
-
-        /* Assessment Buttons */
-        .assessment-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .assessment-btn {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 1.25rem;
+        .form-control {
+            padding: 0.6rem 1rem;
             border: 1px solid var(--card-border);
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            color: inherit;
+            border-radius: 10px;
+            background: var(--bg-color);
+            color: var(--text-main);
+            font-size: 0.85rem;
+            min-width: 140px;
+            cursor: pointer;
             transition: all 0.25s ease;
+            font-family: 'Inter', sans-serif;
         }
 
-        .assessment-btn:hover {
+        .form-control:focus {
+            outline: none;
             border-color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+            background: white;
         }
 
-        .assessment-btn-icon {
-            width: 52px;
-            height: 52px;
-            background: rgba(35, 70, 38, 0.08);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            color: var(--primary);
-            flex-shrink: 0;
-            transition: all 0.25s ease;
+        .form-control:hover {
+            border-color: rgba(35, 70, 38, 0.2);
         }
 
-        .assessment-btn:hover .assessment-btn-icon {
+        button#resetFilters {
             background: var(--primary);
             color: white;
-        }
-
-        .assessment-btn-content {
-            flex: 1;
-        }
-
-        .assessment-btn-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
             font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        button#resetFilters:hover {
+            background: var(--accent);
             color: var(--primary);
-            margin-bottom: 0.15rem;
+            transform: translateY(-1px);
         }
 
-        .assessment-btn-desc {
-            font-size: 0.75rem;
-            color: var(--text-muted);
+        /* --- Table Styling --- */
+        .table-container {
+            padding: 0;
+            overflow-x: auto;
+            max-height: 65vh;
         }
 
-        .assessment-btn-arrow {
-            color: var(--text-muted);
+        table {
+            width: 100%;
+            border-collapse: collapse;
             font-size: 0.9rem;
-            transition: transform 0.25s ease;
         }
 
-        .assessment-btn:hover .assessment-btn-arrow {
-            transform: translateX(3px);
-            color: var(--accent);
+        thead {
+            background: var(--primary);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
-        /* --- BOTTOM NAVIGATION --- */
+        th {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            color: var(--text-main);
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: rgba(35, 70, 38, 0.03);
+        }
+
+        /* --- Custom Badges --- */
+        .badge-kelas {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            background: rgba(35, 70, 38, 0.08);
+            color: var(--primary);
+            border: 1px solid rgba(35, 70, 38, 0.15);
+        }
+
+        /* Specific Class Colors */
+        tr.kelas-7A .badge-kelas { background: #ecfdf5; color: #047857; border-color: #6ee7b7; }
+        tr.kelas-7B .badge-kelas { background: #f0f9ff; color: #0369a1; border-color: #7dd3fc; }
+        tr.kelas-8A .badge-kelas { background: #fffbeb; color: #b45309; border-color: #fcd34d; }
+        tr.kelas-8B .badge-kelas { background: #fdf2f8; color: #db2777; border-color: #f9a8d4; }
+        tr.kelas-9A .badge-kelas { background: #f5f3ff; color: #7c3aed; border-color: #c4b5fd; }
+        tr.kelas-9B .badge-kelas { background: #fff1f2; color: #e11d48; border-color: #fda4af; }
+
+        /* Status Badges */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-selesai {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .status-proses {
+            background-color: #fef3c7;
+            color: #b45309;
+        }
+
+        /* --- Bottom Navigation --- */
         .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: var(--nav-bg);
+            background: var(--white);
             padding: 0.5rem 0.35rem calc(0.5rem + env(safe-area-inset-bottom));
             box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.06);
             z-index: 1000;
@@ -644,32 +446,23 @@
         }
 
         /* ESS Nav Item Highlight */
-        .nav-item.highlight {
+        .nav-item.ess-nav {
             color: #9a7b1e;
         }
 
-        .nav-item.highlight i {
+        .nav-item.ess-nav i {
             color: var(--accent);
         }
 
-        .nav-item.highlight.active {
-            background: rgba(212, 175, 55, 0.1);
-            color: #9a7b1e;
-        }
-
-        .nav-item.highlight.active::before {
-            background: var(--accent);
-        }
-
-        .nav-item.highlight:hover {
+        .nav-item.ess-nav:hover {
             color: #9a7b1e;
         }
 
         /* --- WhatsApp FAB --- */
         .fab {
             position: fixed;
-            bottom: 95px;
-            right: 1.25rem;
+            bottom: 80px;
+            right: 1rem;
             width: 50px;
             height: 50px;
             background: #25D366;
@@ -689,203 +482,240 @@
         .fab:hover {
             transform: scale(1.08);
         }
+
+        /* Responsive */
+        @media (min-width: 769px) {
+            .mobile-header {
+                display: none;
+            }
+            
+            .bottom-nav {
+                display: none;
+            }
+            
+            .fab {
+                bottom: 1.5rem;
+            }
+            
+            body {
+                padding: 1.5rem;
+            }
+            
+            .container {
+                margin: 0 auto;
+            }
+
+            .desktop-nav {
+                display: flex;
+                max-width: 1400px;
+                margin: 0 auto 1rem auto;
+            }
+
+            .desktop-back-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                text-decoration: none;
+                color: var(--primary);
+                font-weight: 600;
+                font-size: 0.95rem;
+                padding: 0.6rem 1.25rem;
+                background: var(--white);
+                border-radius: 50px;
+                box-shadow: var(--shadow-sm);
+                transition: all 0.25s ease;
+                border: 1px solid var(--card-border);
+            }
+
+            .desktop-back-btn:hover {
+                transform: translateX(-3px);
+                box-shadow: var(--shadow-md);
+                border-color: var(--accent);
+            }
+
+            .page-header {
+                padding: 2rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .filters-wrapper {
+                padding: 1.25rem 1.5rem;
+            }
+
+            th, td {
+                padding: 1rem 1.25rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .filters-wrapper {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .form-control {
+                width: 100%;
+                min-width: auto;
+            }
+
+            button#resetFilters {
+                width: 100%;
+                justify-content: center;
+            }
+
+            th, td {
+                padding: 0.7rem 0.85rem;
+                font-size: 0.8rem;
+            }
+
+            body {
+                padding-bottom: 90px;
+            }
+        }
+
+        /* Scrollbar Styling */
+        .table-container::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .table-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .table-container::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        .table-container::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Background Pattern -->
     <div class="bg-pattern"></div>
 
     <!-- Mobile Header -->
     <header class="mobile-header">
         <div class="mobile-header-left">
             <div class="mobile-header-logo">
-                <i class="fa-solid fa-graduation-cap"></i>
+                <i class="fa-solid fa-book-open"></i>
             </div>
             <div>
-                <div class="mobile-header-title">EduPortal</div>
-                <div class="mobile-header-subtitle">English Department</div>
+                <div class="mobile-header-title">Jurnal Kelas</div>
+                <div class="mobile-header-subtitle">EduPortal • English Department</div>
             </div>
         </div>
+        <a href="https://azhibnmjkfr.github.io/epmobile/" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Back
+        </a>
     </header>
 
-    <!-- Page: Home -->
-    <div class="page active" id="page-home">
-        <div class="home-container">
-            
-            <!-- Greeting -->
-            <div class="greeting-section">
-                <div class="greeting-time" id="greeting-time">Good Morning</div>
-                <div class="greeting-name">Ahmad Zaman Huri, S.Pd.</div>
-                <div class="greeting-role">English Teacher • MTsT Daarut Tahfizh Al-Ikhlas</div>
-            </div>
-
-            <!-- Hero Card -->
-            <div class="hero-card">
-                <span class="hero-badge">
-                    <i class="fa-solid fa-sparkles"></i> Welcome to EduPortal
-                </span>
-                <h2 class="hero-title">Your Digital Command Center</h2>
-                <p class="hero-subtitle">One-stop platform for classroom management, student assessment, and academic tracking.</p>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">4</div>
-                        <div class="hero-stat-label">Features</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">24/7</div>
-                        <div class="hero-stat-label">Access</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">100%</div>
-                        <div class="hero-stat-label">Paperless</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- About EduPortal -->
-            <div class="about-section">
-                <h3 class="section-title"><i class="fa-solid fa-circle-info"></i> About EduPortal</h3>
-                <div class="about-card">
-                    <p class="about-text">
-                        <strong>EduPortal</strong> is a comprehensive digital platform designed for the English Department at MTsT Daarut Tahfizh Al-Ikhlas. It transforms traditional workflows into streamlined digital experiences.
-                    </p>
-                    <div class="about-highlight">
-                        <p class="about-text">
-                            <i class="fa-solid fa-bullseye" style="color: var(--accent); margin-right: 0.4rem;"></i>
-                            <strong>Mission:</strong> Empowering educators with intuitive tools to enhance teaching efficiency and track student progress.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Features Grid -->
-            <h3 class="section-title"><i class="fa-solid fa-grid-2"></i> Features</h3>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-book-open"></i>
-                    </div>
-                    <div class="feature-title">Jurnal Kelas</div>
-                    <div class="feature-desc">Teaching logs & attendance</div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-images"></i>
-                    </div>
-                    <div class="feature-title">Morphea</div>
-                    <div class="feature-desc">Class photo gallery</div>
-                </div>
-                <div class="feature-item highlight">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <div class="feature-title">ESS</div>
-                    <div class="feature-desc">Student score analytics</div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-file-alt"></i>
-                    </div>
-                    <div class="feature-title">Assessment</div>
-                    <div class="feature-desc">PTS & PAS management</div>
-                </div>
-            </div>
-
-            <!-- About Me Section -->
-            <div class="about-me-section">
-                <h3 class="section-title"><i class="fa-solid fa-user"></i> About Me</h3>
-                <a href="https://s.id/azhibnmjkfr" target="_blank" class="about-me-card">
-                    <div class="about-me-avatar">
-                        <i class="fa-solid fa-user-tie"></i>
-                    </div>
-                    <div class="about-me-content">
-                        <div class="about-me-name">Ahmad Zaman Huri, S.Pd.</div>
-                        <div class="about-me-role">English Teacher • Content Creator</div>
-                        <div class="about-me-link">
-                            <i class="fa-solid fa-link"></i> s.id/azhibnmjkfr
-                        </div>
-                    </div>
-                    <div class="about-me-arrow">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p>&copy; 2025 <strong>Paperless School Initiative</strong>. All Rights Reserved.</p>
-            <p class="footer-version">EduPortal v1.0 • MTsT Daarut Tahfizh Al-Ikhlas</p>
-        </footer>
+    <!-- Desktop Navigation -->
+    <div class="desktop-nav">
+        <a href="https://azhibnmjkfr.github.io/epmobile/" class="desktop-back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </a>
     </div>
 
-    <!-- Page: Assessment -->
-    <div class="page" id="page-assessment">
-        <div class="assessment-container">
-            <div class="assessment-header">
-                <div class="assessment-icon">
-                    <i class="fa-solid fa-file-alt"></i>
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="page-header-content">
+                <span class="page-badge">
+                    <i class="fa-solid fa-sparkles"></i> Digital Teaching Log
+                </span>
+                <h1 class="page-title">Jurnal Kelas Digital</h1>
+                <div class="page-meta">
+                    <span><i class="fa-solid fa-user"></i> Ahmad Zaman Huri, S.Pd.</span>
+                    <span><i class="fa-solid fa-school"></i> MTsT Daarut Tahfizh Al-Ikhlas</span>
+                    <span><i class="fa-solid fa-book"></i> Bahasa Inggris</span>
                 </div>
-                <h2 class="assessment-title">Assessment</h2>
-                <p class="assessment-desc">Student evaluation management for Mid-Term (PTS) and Final Semester (PAS) assessments.</p>
             </div>
+        </div>
 
-            <div class="assessment-buttons">
-                <!-- PTS Button -->
-                <a href="https://azhibnmjkfr.github.io/rekap-data-pts-ganjil/" target="_blank" class="assessment-btn">
-                    <div class="assessment-btn-icon">
-                        <i class="fa-solid fa-file-contract"></i>
-                    </div>
-                    <div class="assessment-btn-content">
-                        <div class="assessment-btn-title">PTS Dashboard</div>
-                        <div class="assessment-btn-desc">Penilaian Tengah Semester • Mid-Term Assessment</div>
-                    </div>
-                    <div class="assessment-btn-arrow">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                </a>
+        <!-- Filters -->
+        <div class="filters-wrapper">
+            <select id="filterKelas" class="form-control">
+                <option value="">All Classes</option>
+            </select>
+            <select id="filterBulan" class="form-control">
+                <option value="">All Months</option>
+                <option value="01">Januari</option>
+                <option value="02">Februari</option>
+                <option value="03">Maret</option>
+                <option value="04">April</option>
+                <option value="05">Mei</option>
+                <option value="06">Juni</option>
+                <option value="07">Juli</option>
+                <option value="08">Agustus</option>
+                <option value="09">September</option>
+                <option value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">Desember</option>
+            </select>
+            <input type="date" id="filterTanggal" class="form-control">
+            <select id="filterStatus" class="form-control">
+                <option value="">All Status</option>
+                <option value="selesai">Completed</option>
+                <option value="proses">In Progress</option>
+            </select>
+            <button id="resetFilters"><i class="fa-solid fa-sync-alt"></i> Reset</button>
+        </div>
 
-                <!-- PAS Button -->
-                <a href="#" target="_blank" class="assessment-btn">
-                    <div class="assessment-btn-icon">
-                        <i class="fa-solid fa-file-signature"></i>
-                    </div>
-                    <div class="assessment-btn-content">
-                        <div class="assessment-btn-title">PAS Dashboard</div>
-                        <div class="assessment-btn-desc">Penilaian Akhir Semester • Final Assessment</div>
-                    </div>
-                    <div class="assessment-btn-arrow">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                </a>
-            </div>
+        <!-- Table -->
+        <div class="table-container">
+            <table id="kegiatanTable">
+                <thead>
+                    <tr>
+                        <th>Kelas</th>
+                        <th>Jam</th>
+                        <th>Tanggal</th>
+                        <th>Hari</th>
+                        <th>Topik / Materi</th>
+                        <th>Aktivitas</th>
+                        <th>Target</th>
+                        <th>Status</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="9" style="text-align:center; padding: 2rem;">Loading Data from Server...</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
         <div class="bottom-nav-inner">
-            <div class="nav-item active" data-page="home">
+            <a href="https://azhibnmjkfr.github.io/epmobile/" class="nav-item">
                 <i class="fa-solid fa-home"></i>
                 <span>Home</span>
-            </div>
-            <a href="https://azhibnmjkfr.github.io/Kegiatan-Kelas-MTsTDTI-2025-2026/" target="_blank" class="nav-item">
+            </a>
+            <a href="https://azhibnmjkfr.github.io/epmobile/jurnal/" class="nav-item active">
                 <i class="fa-solid fa-book-open"></i>
                 <span>Jurnal</span>
             </a>
-            <a href="https://azhibnmjkfr.github.io/MorpheaDTI/" target="_blank" class="nav-item">
+            <a href="https://azhibnmjkfr.github.io/epmobile/morphea/" class="nav-item">
                 <i class="fa-solid fa-images"></i>
                 <span>Morphea</span>
             </a>
-            <a href="https://azhibnmjkfr.github.io/english-scores-system/" target="_blank" class="nav-item highlight">
+            <a href="https://azhibnmjkfr.github.io/epmobile/ess/" class="nav-item ess-nav">
                 <i class="fa-solid fa-graduation-cap"></i>
                 <span>ESS</span>
             </a>
-            <div class="nav-item" data-page="assessment">
+            <a href="https://azhibnmjkfr.github.io/epmobile/assesment/pts/" class="nav-item">
                 <i class="fa-solid fa-file-alt"></i>
-                <span>Assessment</span>
-            </div>
+                <span>Assess</span>
+            </a>
         </div>
     </nav>
 
@@ -894,44 +724,228 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- JavaScript Logic -->
     <script>
-        // --- Navigation Logic ---
-        const navItems = document.querySelectorAll('.nav-item[data-page]');
-        const pages = document.querySelectorAll('.page');
+        const SHEET_ID = "1JTwCrf7N27tuN6R3qBMzasoVPg3KixnetD9jLafrAJs";
+        const SHEET_NAME = "Kegiatan";
+        const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${SHEET_NAME}`;
+        
+        const filterKelas = document.getElementById("filterKelas");
+        const filterBulan = document.getElementById("filterBulan");
+        const filterTanggal = document.getElementById("filterTanggal");
+        const filterStatus = document.getElementById("filterStatus");
+        const resetBtn = document.getElementById("resetFilters");
+        const tableBody = document.querySelector("#kegiatanTable tbody");
+        let allData = [];
 
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const targetPage = item.getAttribute('data-page');
-                
-                navItems.forEach(nav => nav.classList.remove('active'));
-                item.classList.add('active');
-                
-                pages.forEach(page => page.classList.remove('active'));
-                document.getElementById(`page-${targetPage}`).classList.add('active');
-                
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
-
-        // --- Dynamic Greeting ---
-        function updateGreeting() {
-            const hour = new Date().getHours();
-            const greetingEl = document.getElementById('greeting-time');
-            let greeting;
-            
-            if (hour >= 5 && hour < 12) {
-                greeting = '☀️ Good Morning';
-            } else if (hour >= 12 && hour < 15) {
-                greeting = '🌤️ Good Afternoon';
-            } else if (hour >= 15 && hour < 18) {
-                greeting = '🌅 Good Evening';
-            } else {
-                greeting = '🌙 Good Night';
+        // --- CSV Parsing Logic ---
+        function parseCSV(csvText) {
+            const rows = [];
+            let currentRow = [];
+            let inQuotes = false;
+            let currentValue = "";
+            for (let i = 0; i < csvText.length; i++) {
+                const char = csvText[i];
+                const nextChar = csvText[i + 1];
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    currentRow.push(currentValue.trim());
+                    currentValue = "";
+                } else if (char === '\n' && !inQuotes) {
+                    currentRow.push(currentValue.trim());
+                    rows.push(currentRow);
+                    currentRow = [];
+                    currentValue = "";
+                } else if (char === '\r' && nextChar === '\n' && !inQuotes) {
+                    currentRow.push(currentValue.trim());
+                    rows.push(currentRow);
+                    currentRow = [];
+                    currentValue = "";
+                    i++;
+                } else {
+                    currentValue += char;
+                }
             }
-            
-            greetingEl.textContent = greeting;
+            if (currentValue.trim() !== "" || currentRow.length > 0) {
+                currentRow.push(currentValue.trim());
+                rows.push(currentRow);
+            }
+            return rows;
         }
-        updateGreeting();
+
+        // --- Date Helpers ---
+        function convertToISODate(dateStr) {
+            if (!dateStr) return "";
+            const parts = dateStr.split("/");
+            if (parts.length === 3) {
+                const day = parts[0].padStart(2, '0');
+                const month = parts[1].padStart(2, '0');
+                const year = parts[2];
+                return `${year}-${month}-${day}`;
+            }
+            try {
+                return new Date(dateStr).toISOString().split('T')[0];
+            } catch {
+                return "";
+            }
+        }
+
+        function getMonthFromISODate(isoDate) {
+            if (!isoDate) return "";
+            return isoDate.split("-")[1];
+        }
+
+        function getDayName(dateStr) {
+            if (!dateStr) return "";
+            let dateObj;
+            const parts = dateStr.split("/");
+            if (parts.length === 3) {
+                const day = parseInt(parts[0], 10);
+                const month = parseInt(parts[1], 10) - 1;
+                const year = parseInt(parts[2], 10);
+                dateObj = new Date(year, month, day);
+            } else {
+                dateObj = new Date(dateStr);
+            }
+            if (isNaN(dateObj.getTime())) return "";
+            return dateObj.toLocaleDateString("id-ID", { weekday: "long" });
+        }
+
+        // --- Data Loading ---
+        async function loadData() {
+            try {
+                const response = await fetch(SHEET_URL);
+                const csv = await response.text();
+                const rows = parseCSV(csv);
+                allData = rows.slice(1)
+                    .filter(r => r.length >= 9 && r[0] && r[0].trim() !== "")
+                    .map(row => {
+                        const originalDate = row[2].replace(/^"|"$/g, "");
+                        return {
+                            original: row,
+                            kelas: row[0].replace(/^"|"$/g, ""),
+                            jam: row[1].replace(/^"|"$/g, ""),
+                            tanggal: originalDate,
+                            tanggalISO: convertToISODate(originalDate),
+                            bulan: getMonthFromISODate(convertToISODate(originalDate)),
+                            topik: row[3].replace(/^"|"$/g, ""),
+                            aktivitas: row[4].replace(/^"|"$/g, ""),
+                            target: row[6].replace(/^"|"$/g, ""),
+                            status: row[7].replace(/^"|"$/g, "").toLowerCase(),
+                            keterangan: row[8].replace(/^"|"$/g, "")
+                        };
+                    })
+                    .sort((a, b) => new Date(b.tanggalISO) - new Date(a.tanggalISO));
+                renderTable(allData);
+                fillDropdowns(allData);
+            } catch (e) {
+                console.error("Error loading data:", e);
+                tableBody.innerHTML = `<tr><td colspan="9" style="text-align:center; color:red;">Failed to load data from Google Sheets.</td></tr>`;
+            }
+        }
+
+        // --- Render Table ---
+        function renderTable(data) {
+            tableBody.innerHTML = "";
+            if (data.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="9" style="text-align:center;">No data found matching your filters.</td></tr>`;
+                return;
+            }
+            data.forEach(item => {
+                const hari = getDayName(item.tanggal);
+                
+                let statusBadge = "";
+                if (item.status.includes("selesai")) {
+                    statusBadge = `<span class="status-badge status-selesai"><i class="fa-solid fa-check-circle"></i> Selesai</span>`;
+                } else if (item.status.includes("proses") || item.status.includes("masih")) {
+                    statusBadge = `<span class="status-badge status-proses"><i class="fa-solid fa-clock"></i> Proses</span>`;
+                } else {
+                     statusBadge = `<span class="status-badge" style="background:#f3f4f6; color:#6b7280;">${item.status}</span>`;
+                }
+
+                const tr = document.createElement("tr");
+                const safeClass = item.kelas.replace(/\W/g, '');
+                tr.classList.add('kelas-' + safeClass);
+
+                tr.innerHTML = `
+                    <td><span class="badge-kelas">${item.kelas}</span></td>
+                    <td style="font-weight:500;">${item.jam}</td>
+                    <td>${item.tanggal}</td>
+                    <td>${hari}</td>
+                    <td style="font-weight:500; color:var(--primary);">${item.topik}</td>
+                    <td>${item.aktivitas}</td>
+                    <td>${item.target}</td>
+                    <td>${statusBadge}</td>
+                    <td style="color:var(--text-muted); font-size:0.8rem;">${item.keterangan}</td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        // --- Filters Logic ---
+        function fillDropdowns(data) {
+            const kelasSet = new Set();
+            data.forEach(item => {
+                if (item.kelas) kelasSet.add(item.kelas);
+            });
+            const defaultOpt = filterKelas.firstElementChild;
+            filterKelas.innerHTML = '';
+            filterKelas.appendChild(defaultOpt);
+            addOptions(filterKelas, kelasSet);
+        }
+
+        function addOptions(select, items) {
+            Array.from(items).sort().forEach(item => {
+                if (!item) return;
+                const option = document.createElement("option");
+                option.value = item;
+                option.textContent = item;
+                select.appendChild(option);
+            });
+        }
+
+        function filterTable() {
+            const kelasVal = filterKelas.value.toLowerCase();
+            const bulanVal = filterBulan.value;
+            const tanggalVal = filterTanggal.value;
+            const statusVal = filterStatus.value.toLowerCase();
+            
+            const filtered = allData.filter(item => {
+                const kelasMatch = !kelasVal || item.kelas.toLowerCase().includes(kelasVal);
+                const bulanMatch = !bulanVal || item.bulan === bulanVal;
+                const tanggalMatch = !tanggalVal || item.tanggalISO === tanggalVal;
+                let statusMatch = true;
+                if (statusVal) {
+                    if (statusVal === "selesai") {
+                        statusMatch = item.status.includes("selesai");
+                    } else if (statusVal === "proses") {
+                        statusMatch = item.status.includes("proses") || item.status.includes("masih");
+                    }
+                }
+                return kelasMatch && bulanMatch && tanggalMatch && statusMatch;
+            });
+            renderTable(filtered);
+        }
+
+        function resetFilters() {
+            filterKelas.value = "";
+            filterBulan.value = "";
+            filterTanggal.value = "";
+            filterStatus.value = "";
+            renderTable(allData);
+        }
+
+        // Event Listeners
+        filterKelas.addEventListener("change", filterTable);
+        filterBulan.addEventListener("change", filterTable);
+        filterTanggal.addEventListener("change", filterTable);
+        filterStatus.addEventListener("change", filterTable);
+        resetBtn.addEventListener("click", resetFilters);
+        
+        // Initial Load
+        loadData();
+
     </script>
 </body>
 </html>
