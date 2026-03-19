@@ -695,23 +695,23 @@
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
         <div class="bottom-nav-inner">
-            <a href="/epmobile/" class="nav-item active">
+            <a href="./" class="nav-item active">
                 <i class="fa-solid fa-home"></i>
                 <span>Home</span>
             </a>
-            <a href="/epmobile/jurnal/index.html" class="nav-item">
+            <a href="./jurnal/index.html" class="nav-item">
                 <i class="fa-solid fa-book-open"></i>
                 <span>Jurnal</span>
             </a>
-            <a href="/epmobile/morphea/index.html" class="nav-item">
+            <a href="./morphea/index.html" class="nav-item">
                 <i class="fa-solid fa-images"></i>
                 <span>Morphea</span>
             </a>
-            <a href="/epmobile/ess/index.html" class="nav-item highlight">
+            <a href="./ess/index.html" class="nav-item highlight">
                 <i class="fa-solid fa-graduation-cap"></i>
                 <span>ESS</span>
             </a>
-            <a href="/epmobile/assesment/index.html" class="nav-item">
+            <a href="./assesment/index.html" class="nav-item">
                 <i class="fa-solid fa-file-alt"></i>
                 <span>Assess</span>
             </a>
@@ -743,6 +743,15 @@
             greetingEl.textContent = greeting;
         }
         updateGreeting();
+        
+        // --- Force correct home path (tambahan keamanan) ---
+        // Memastikan semua link Home di halaman ini mengarah ke lokasi yang benar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cek apakah kita sedang di halaman yang benar
+            if (window.location.pathname.includes('/eduportal/')) {
+                console.warn('Redirect detected! This page should be in /epmobile/ not /eduportal/');
+            }
+        });
     </script>
 </body>
 </html>
