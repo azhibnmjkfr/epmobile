@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Kelas 8 - Morphea | EduPortal</title>
+  <title>Morphea | EduPortal</title>
   <meta name="theme-color" content="#234626">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,33 +108,34 @@
       margin: 0 auto;
     }
 
-    /* Header Section */
-    .section-header {
-      margin-bottom: 1.25rem;
+    /* Hero Section */
+    .hero-section {
+      text-align: center;
+      margin-bottom: 1.5rem;
     }
-    .section-header h1 {
+    .hero-section h1 {
       font-family: 'Poppins', sans-serif;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
     }
-    .section-header p {
+    .hero-section p {
       font-size: 0.75rem;
       color: var(--text-muted);
     }
 
-    /* Cards Grid - Simpel & Elegan */
+    /* Cards Grid */
     .cards-grid {
       display: flex;
       flex-direction: column;
-      gap: 0.9rem;
+      gap: 1rem;
     }
 
     .card {
       background: var(--card-bg);
-      border-radius: 14px;
-      padding: 0.9rem 1rem;
+      border-radius: 16px;
+      padding: 1.25rem;
       border: 1px solid var(--card-border);
       display: flex;
       align-items: center;
@@ -142,6 +143,21 @@
       text-decoration: none;
       transition: all 0.2s ease;
       box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
     }
 
     .card:hover {
@@ -150,15 +166,19 @@
       box-shadow: var(--shadow-md);
     }
 
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
     .card-icon {
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      border-radius: 12px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       color: white;
       flex-shrink: 0;
       transition: all 0.2s ease;
@@ -175,10 +195,10 @@
 
     .card-title {
       font-family: 'Poppins', sans-serif;
-      font-size: 0.95rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: var(--primary);
-      margin-bottom: 0.1rem;
+      margin-bottom: 0.2rem;
     }
 
     .card-desc {
@@ -186,25 +206,26 @@
       color: var(--text-muted);
     }
 
+    .card-badge {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--accent);
+      font-size: 0.6rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 0.3rem;
+    }
+
     .card-arrow {
       color: var(--text-muted);
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       transition: all 0.2s ease;
     }
 
     .card:hover .card-arrow {
       color: var(--accent);
       transform: translateX(3px);
-    }
-
-    .badge {
-      background: rgba(212, 175, 55, 0.1);
-      color: var(--accent);
-      font-size: 0.6rem;
-      font-weight: 600;
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-left: 0.5rem;
     }
 
     /* Footer */
@@ -271,11 +292,11 @@
       body { padding-bottom: 0; }
       .desktop-nav { display: block; max-width: 600px; margin: 0 auto; padding: 1rem 1rem 0 1rem; }
       .main-container { max-width: 600px; padding: 1rem 1rem 2rem 1rem; }
-      .cards-grid { gap: 1rem; }
-      .card { padding: 1rem 1.2rem; }
-      .card-icon { width: 52px; height: 52px; font-size: 1.3rem; }
-      .card-title { font-size: 1rem; }
-      .card-desc { font-size: 0.75rem; }
+      .cards-grid { gap: 1.2rem; }
+      .card { padding: 1.5rem; }
+      .card-icon { width: 64px; height: 64px; font-size: 1.6rem; }
+      .card-title { font-size: 1.2rem; }
+      .card-desc { font-size: 0.8rem; }
     }
 
     @media (max-width: 768px) {
@@ -289,13 +310,13 @@
 
   <!-- Mobile Header -->
   <header class="mobile-header">
-    <a href="../../" class="mobile-header-left" style="text-decoration: none; color: white;">
+    <a href="../" class="mobile-header-left" style="text-decoration: none; color: white;">
       <div class="mobile-header-logo">
         <i class="fa-solid fa-images"></i>
       </div>
       <div>
-        <div class="mobile-header-title">Kelas 8</div>
-        <div class="mobile-header-subtitle">Morphea Gallery</div>
+        <div class="mobile-header-title">Morphea</div>
+        <div class="mobile-header-subtitle">Digital Classroom Archive</div>
       </div>
     </a>
     <a href="../" class="back-btn">
@@ -305,7 +326,7 @@
 
   <!-- Desktop Navigation -->
   <div class="desktop-nav">
-    <a href="../../" class="desktop-back-btn">
+    <a href="../" class="desktop-back-btn">
       <i class="fa-solid fa-arrow-left"></i> Back to Home
     </a>
   </div>
@@ -313,41 +334,37 @@
   <!-- Main Content -->
   <main class="main-container">
     
-    <div class="section-header">
-      <h1>Class 8 Archives</h1>
-      <p>Learning materials & classroom memories</p>
+    <div class="hero-section">
+      <h1>Morphea Gallery</h1>
+      <p>Your digital archive for class memories, materials, and learning moments</p>
     </div>
 
     <div class="cards-grid">
       
-      <!-- Learning Materials Card -->
-      <a href="https://azhibnmjkfr.github.io/perangkat-ajar-kelas-8/" target="_blank" class="card">
+      <!-- Kelas 8 Card -->
+      <a href="./kelas-8/index.html" class="card">
         <div class="card-icon">
-          <i class="fas fa-book-open"></i>
+          <i class="fas fa-photo-video"></i>
         </div>
         <div class="card-content">
-          <div class="card-title">
-            Learning Materials
-            <span class="badge">PDF</span>
-          </div>
-          <div class="card-desc">Modules, worksheets & presentations</div>
+          <div class="card-title">Kelas 8</div>
+          <div class="card-desc">Learning materials & classroom memories</div>
+          <div class="card-badge">Class of 2025/2026</div>
         </div>
         <div class="card-arrow">
           <i class="fa-solid fa-chevron-right"></i>
         </div>
       </a>
 
-      <!-- Class Gallery Card -->
-      <a href="https://drive.google.com/drive/folders/1tMly9o54FpmWfozqXK5aI_bPMMYivzvz?usp=sharing" target="_blank" class="card">
+      <!-- Kelas 9 Card -->
+      <a href="./kelas-9/index.html" class="card">
         <div class="card-icon">
-          <i class="fas fa-images"></i>
+          <i class="fas fa-graduation-cap"></i>
         </div>
         <div class="card-content">
-          <div class="card-title">
-            Class Gallery
-            <span class="badge">Photos</span>
-          </div>
-          <div class="card-desc">Classroom moments & activities</div>
+          <div class="card-title">Kelas 9</div>
+          <div class="card-desc">Learning materials & classroom memories</div>
+          <div class="card-badge">Class of 2024/2025</div>
         </div>
         <div class="card-arrow">
           <i class="fa-solid fa-chevron-right"></i>
@@ -367,23 +384,23 @@
   <!-- Bottom Navigation -->
   <nav class="bottom-nav">
     <div class="bottom-nav-inner">
-      <a href="../../" class="nav-item">
+      <a href="../" class="nav-item">
         <i class="fa-solid fa-home"></i>
         <span>Home</span>
       </a>
-      <a href="../../jurnal/" class="nav-item">
+      <a href="../jurnal/" class="nav-item">
         <i class="fa-solid fa-book-open"></i>
         <span>Jurnal</span>
       </a>
-      <a href="../../morphea/" class="nav-item active">
+      <a href="./" class="nav-item active">
         <i class="fa-solid fa-images"></i>
         <span>Morphea</span>
       </a>
-      <a href="../../ess/" class="nav-item highlight">
+      <a href="../ess/" class="nav-item highlight">
         <i class="fa-solid fa-graduation-cap"></i>
         <span>ESS</span>
       </a>
-      <a href="../../assessment/" class="nav-item">
+      <a href="../assessment/" class="nav-item">
         <i class="fa-solid fa-file-alt"></i>
         <span>Assess</span>
       </a>
@@ -391,7 +408,7 @@
   </nav>
 
   <!-- WhatsApp FAB -->
-  <a href="https://wa.me/6282246077307?text=Salam%2C%20saya%20ingin%20bertanya%20tentang%20materi%20Kelas%208%20MORPHEA" target="_blank" class="fab">
+  <a href="https://wa.me/6282246077307?text=Salam%2C%20saya%20ingin%20bertanya%20tentang%20Morphea%20Gallery" target="_blank" class="fab">
     <i class="fab fa-whatsapp"></i>
   </a>
 
