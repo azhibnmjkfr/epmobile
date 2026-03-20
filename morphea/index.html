@@ -3,25 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Morphea | EduPortal</title>
-  <meta name="description" content="Platform Materi & Galeri Bahasa Inggris - MTsT Daarut Tahfizh Al-Ikhlas">
-  <meta name="author" content="Ahmad Zaman Huri, S.Pd.">
+  <title>Kelas 8 - Morphea | EduPortal</title>
   <meta name="theme-color" content="#234626">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
-      /* Tema Khas EduPortal */
       --primary: #234626;
       --primary-dark: #1a351d;
-      --primary-light: #2f5e33;
       --accent: #D4AF37;
       --accent-hover: #b5952f;
       --bg-color: #F8FAFC;
@@ -30,61 +23,36 @@
       --white: #FFFFFF;
       --card-bg: rgba(255, 255, 255, 0.95);
       --card-border: rgba(35, 70, 38, 0.08);
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-      --shadow-md: 0 8px 24px rgba(35, 70, 38, 0.12);
-      --shadow-glow: 0 4px 20px rgba(212, 175, 55, 0.3);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 12px rgba(35, 70, 38, 0.08);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-main);
-      line-height: 1.6;
       min-height: 100vh;
       padding-bottom: 85px;
     }
 
-    /* --- Background Pattern (Tema Khas EduPortal) --- */
     .bg-pattern {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
+      top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
       background-color: var(--bg-color);
       background-image: 
-        /* Diagonal stripes pattern - soft green */
-        repeating-linear-gradient(
-          -45deg,
-          transparent,
-          transparent 30px,
-          rgba(35, 70, 38, 0.02) 30px,
-          rgba(35, 70, 38, 0.02) 31px
-        ),
-        repeating-linear-gradient(
-          45deg,
-          transparent,
-          transparent 30px,
-          rgba(35, 70, 38, 0.015) 30px,
-          rgba(35, 70, 38, 0.015) 31px
-        ),
-        /* Subtle gradient overlays */
+        repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(35, 70, 38, 0.02) 30px, rgba(35, 70, 38, 0.02) 31px),
+        repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(35, 70, 38, 0.015) 30px, rgba(35, 70, 38, 0.015) 31px),
         radial-gradient(at 0% 0%, rgba(35, 70, 38, 0.04) 0px, transparent 50%),
         radial-gradient(at 100% 100%, rgba(212, 175, 55, 0.04) 0px, transparent 50%);
     }
 
-    /* --- Mobile Header --- */
+    /* Mobile Header */
     .mobile-header {
       background: var(--primary);
       color: white;
-      padding: 1rem 1.25rem;
+      padding: 0.9rem 1.25rem;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -93,541 +61,225 @@
       justify-content: space-between;
     }
 
-    .mobile-header-left {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: white;
-      cursor: pointer;
+    .mobile-header-left { 
+      display: flex; align-items: center; gap: 0.7rem;
+      text-decoration: none; color: white;
     }
 
     .mobile-header-logo {
-      width: 42px;
-      height: 42px;
+      width: 38px; height: 38px;
       background: rgba(255, 255, 255, 0.15);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      color: var(--accent);
-      transition: all 0.25s ease;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: var(--accent);
+      transition: all 0.2s ease;
     }
 
     .mobile-header-left:hover .mobile-header-logo {
       background: rgba(255, 255, 255, 0.25);
-      transform: scale(1.02);
     }
 
-    .mobile-header-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 600;
-      letter-spacing: -0.3px;
-    }
-
-    .mobile-header-subtitle {
-      font-size: 0.7rem;
-      opacity: 0.8;
-      font-weight: 400;
-      letter-spacing: 0.3px;
-    }
+    .mobile-header-title { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; }
+    .mobile-header-subtitle { font-size: 0.65rem; opacity: 0.8; }
 
     .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      font-size: 0.85rem;
-      padding: 0.5rem 0.85rem;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 50px;
-      transition: all 0.25s ease;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      text-decoration: none; color: white; font-weight: 500; font-size: 0.8rem;
+      padding: 0.4rem 0.75rem; background: rgba(255, 255, 255, 0.15);
+      border-radius: 40px; transition: all 0.2s ease;
     }
+    .back-btn:hover { background: var(--accent); color: var(--primary); transform: translateX(-2px); }
 
-    .back-btn:hover {
-      background: var(--accent);
-      color: var(--primary);
-      transform: translateX(-3px);
+    /* Desktop Navigation */
+    .desktop-nav { display: none; }
+    .desktop-back-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      text-decoration: none; color: var(--primary); font-weight: 500; font-size: 0.85rem;
+      padding: 0.5rem 1rem; background: white; border-radius: 40px;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--card-border);
+      transition: all 0.2s ease;
     }
+    .desktop-back-btn:hover { transform: translateX(-3px); border-color: var(--accent); color: var(--accent); }
 
-    /* --- Main Container --- */
+    /* Main Container */
     .main-container {
-      padding: 1.5rem 1.25rem;
-    }
-
-    /* --- Hero Card --- */
-    .hero-card {
-      background: linear-gradient(145deg, var(--primary) 0%, var(--primary-dark) 100%);
-      border-radius: 20px;
-      padding: 1.5rem;
-      color: white;
-      margin-bottom: 1.5rem;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(35, 70, 38, 0.25);
-    }
-
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: -30%;
-      right: -20%;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-card::after {
-      content: '\f03e';
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      position: absolute;
-      bottom: -15px;
-      right: 15px;
-      font-size: 6rem;
-      color: rgba(255, 255, 255, 0.06);
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(212, 175, 55, 0.15);
-      color: var(--accent);
-      padding: 0.3rem 0.75rem;
-      border-radius: 50px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      border: 1px solid rgba(212, 175, 55, 0.25);
-    }
-
-    .hero-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-subtitle {
-      font-size: 0.85rem;
-      opacity: 0.85;
-      line-height: 1.6;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 1.25rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-stat {
-      text-align: center;
-    }
-
-    .hero-stat-value {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .hero-stat-label {
-      font-size: 0.65rem;
-      opacity: 0.7;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* --- Section Title --- */
-    .section-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .section-title i {
-      font-size: 0.85rem;
-      color: var(--accent);
-    }
-
-    /* --- Class Cards Grid --- */
-    .class-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .class-card {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 1.5rem;
-      border: 1px solid var(--card-border);
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .class-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-    }
-
-    .class-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .class-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .class-icon {
-      width: 56px;
-      height: 56px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: white;
-      flex-shrink: 0;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(35, 70, 38, 0.2);
-    }
-
-    .class-card:hover .class-icon {
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
-      transform: scale(1.05);
-    }
-
-    .class-content {
-      flex: 1;
-    }
-
-    .class-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.15rem;
-    }
-
-    .class-desc {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .class-badge {
-      position: absolute;
-      top: 0.75rem;
-      right: 0.75rem;
-      font-size: 0.6rem;
-      font-weight: 700;
-      color: var(--accent);
-      background: rgba(212, 175, 55, 0.1);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .class-arrow {
-      color: var(--text-muted);
-      font-size: 1rem;
-      transition: all 0.25s ease;
-    }
-
-    .class-card:hover .class-arrow {
-      color: var(--accent);
-      transform: translateX(3px);
-    }
-
-    /* --- Footer --- */
-    .footer {
-      text-align: center;
-      padding: 1.25rem 1rem;
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      border-top: 1px solid rgba(0,0,0,0.04);
-      background: var(--card-bg);
-    }
-
-    .footer strong {
-      color: var(--primary);
-    }
-
-    .footer-version {
-      margin-top: 0.35rem;
-      opacity: 0.6;
-    }
-
-    /* --- Bottom Navigation --- */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--white);
-      padding: 0.5rem 0.35rem calc(0.5rem + env(safe-area-inset-bottom));
-      box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.06);
-      z-index: 1000;
-      border-top: 1px solid var(--card-border);
-    }
-
-    .bottom-nav-inner {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
+      padding: 1rem 1rem 2rem 1rem;
       max-width: 500px;
       margin: 0 auto;
     }
 
-    .nav-item {
+    /* Header Section */
+    .section-header {
+      margin-bottom: 1.25rem;
+    }
+    .section-header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.2rem;
+    }
+    .section-header p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Cards Grid - Simpel & Elegan */
+    .cards-grid {
       display: flex;
       flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--card-border);
+      display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 0.4rem 0.5rem;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.25s ease;
+      gap: 1rem;
       text-decoration: none;
-      color: var(--text-muted);
-      min-width: 48px;
-      position: relative;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
     }
 
-    .nav-item i {
-      font-size: 1.1rem;
-      margin-bottom: 0.15rem;
-      transition: all 0.25s ease;
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-md);
     }
 
-    .nav-item span {
-      font-size: 0.55rem;
-      font-weight: 500;
-      transition: all 0.25s ease;
-    }
-
-    .nav-item.active {
-      color: var(--primary);
-      background: rgba(35, 70, 38, 0.08);
-    }
-
-    .nav-item.active i {
-      transform: scale(1.1);
-    }
-
-    .nav-item:hover {
-      color: var(--primary);
-    }
-
-    .nav-item.active::before {
-      content: '';
-      position: absolute;
-      top: -1px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 16px;
-      height: 3px;
-      background: var(--accent);
-      border-radius: 0 0 3px 3px;
-    }
-
-    /* ESS Nav Item Highlight */
-    .nav-item.highlight {
-      color: #9a7b1e;
-    }
-
-    .nav-item.highlight i {
-      color: var(--accent);
-    }
-
-    .nav-item.highlight:hover {
-      color: #9a7b1e;
-    }
-
-    /* --- WhatsApp FAB --- */
-    .fab {
-      position: fixed;
-      bottom: 95px;
-      right: 1.25rem;
-      width: 50px;
-      height: 50px;
-      background: #25D366;
-      color: white;
-      border-radius: 50%;
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.35rem;
-      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
-      cursor: pointer;
-      z-index: 100;
-      transition: transform 0.25s ease;
+      font-size: 1.2rem;
+      color: white;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover .card-icon {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+      transform: scale(1.02);
+    }
+
+    .card-content {
+      flex: 1;
+    }
+
+    .card-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.1rem;
+    }
+
+    .card-desc {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .card-arrow {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover .card-arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    .badge {
+      background: rgba(212, 175, 55, 0.1);
+      color: var(--accent);
+      font-size: 0.6rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      color: var(--text-muted);
+      font-size: 0.65rem;
+      border-top: 1px solid rgba(0,0,0,0.04);
+      background: var(--card-bg);
+      margin-top: 1.5rem;
+    }
+    .footer strong { color: var(--primary); }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: white;
+      padding: 0.45rem 0.35rem calc(0.45rem + env(safe-area-inset-bottom));
+      box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+      border-top: 1px solid var(--card-border);
+    }
+    .bottom-nav-inner {
+      display: flex; justify-content: space-around; align-items: center;
+      max-width: 500px; margin: 0 auto;
+    }
+    .nav-item {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 0.35rem 0.4rem;
+      border-radius: 10px;
       text-decoration: none;
+      color: var(--text-muted);
+      min-width: 44px;
+      position: relative;
+      transition: all 0.2s ease;
     }
-
-    .fab:hover {
-      transform: scale(1.08);
+    .nav-item i { font-size: 1rem; margin-bottom: 0.1rem; }
+    .nav-item span { font-size: 0.5rem; font-weight: 500; }
+    .nav-item.active { color: var(--primary); background: rgba(35, 70, 38, 0.08); }
+    .nav-item.active::before {
+      content: ''; position: absolute; top: -2px; left: 50%;
+      transform: translateX(-50%); width: 20px; height: 2px;
+      background: var(--accent); border-radius: 2px;
     }
+    .nav-item.highlight { color: #9a7b1e; }
+    .nav-item.highlight i { color: var(--accent); }
 
-    /* --- Desktop Styles --- */
+    /* WhatsApp FAB */
+    .fab {
+      position: fixed; bottom: 85px; right: 1rem;
+      width: 44px; height: 44px; background: #25D366; color: white;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; box-shadow: 0 2px 10px rgba(37, 211, 102, 0.3);
+      z-index: 100; transition: transform 0.2s ease; text-decoration: none;
+    }
+    .fab:hover { transform: scale(1.05); }
+
+    /* Desktop Styles */
     @media (min-width: 769px) {
-      .mobile-header {
-        display: none;
-      }
-      
-      .bottom-nav {
-        display: none;
-      }
-      
-      .fab {
-        bottom: 1.5rem;
-        right: 1.5rem;
-      }
-      
-      body {
-        padding-bottom: 0;
-      }
-
-      .desktop-nav {
-        display: flex;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 1.5rem 1rem 0 1rem;
-      }
-
-      .desktop-back-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        text-decoration: none;
-        color: var(--primary);
-        font-weight: 600;
-        font-size: 0.95rem;
-        padding: 0.6rem 1.25rem;
-        background: var(--white);
-        border-radius: 50px;
-        box-shadow: var(--shadow-sm);
-        transition: all 0.25s ease;
-        border: 1px solid var(--card-border);
-      }
-
-      .desktop-back-btn:hover {
-        transform: translateX(-3px);
-        box-shadow: var(--shadow-md);
-        border-color: var(--accent);
-      }
-
-      .main-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-      }
-
-      .hero-card {
-        padding: 2rem;
-      }
-
-      .hero-title {
-        font-size: 2rem;
-      }
-
-      .class-grid {
-        flex-direction: row;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-
-      .class-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem;
-      }
-
-      .class-icon {
-        width: 72px;
-        height: 72px;
-        font-size: 1.75rem;
-      }
-
-      .class-badge {
-        position: static;
-        margin-top: 0.5rem;
-        display: inline-block;
-      }
-
-      .class-arrow {
-        display: none;
-      }
-
-      .class-card::after {
-        content: 'Open Class';
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: var(--primary);
-        color: white;
-        padding: 0.6rem 1.25rem;
-        border-radius: 50px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        margin-top: 1rem;
-        transition: all 0.25s ease;
-      }
-
-      .class-card:hover::after {
-        background: var(--accent);
-        color: var(--primary);
-      }
+      .mobile-header { display: none; }
+      .bottom-nav { display: none; }
+      .fab { bottom: 1.5rem; right: 1.5rem; width: 48px; height: 48px; font-size: 1.3rem; }
+      body { padding-bottom: 0; }
+      .desktop-nav { display: block; max-width: 600px; margin: 0 auto; padding: 1rem 1rem 0 1rem; }
+      .main-container { max-width: 600px; padding: 1rem 1rem 2rem 1rem; }
+      .cards-grid { gap: 1rem; }
+      .card { padding: 1rem 1.2rem; }
+      .card-icon { width: 52px; height: 52px; font-size: 1.3rem; }
+      .card-title { font-size: 1rem; }
+      .card-desc { font-size: 0.75rem; }
     }
 
     @media (max-width: 768px) {
-      .desktop-nav {
-        display: none;
-      }
-
-      .class-card::after {
-        display: none;
-      }
+      .desktop-nav { display: none; }
     }
   </style>
 </head>
@@ -635,15 +287,15 @@
 
   <div class="bg-pattern"></div>
 
-  <!-- Mobile Header - Logo bisa diklik ke Home -->
+  <!-- Mobile Header -->
   <header class="mobile-header">
-    <a href="../" class="mobile-header-left" style="text-decoration: none; color: white;">
+    <a href="../../" class="mobile-header-left" style="text-decoration: none; color: white;">
       <div class="mobile-header-logo">
         <i class="fa-solid fa-images"></i>
       </div>
       <div>
-        <div class="mobile-header-title">Morphea</div>
-        <div class="mobile-header-subtitle">EduPortal • Learning Gallery</div>
+        <div class="mobile-header-title">Kelas 8</div>
+        <div class="mobile-header-subtitle">Morphea Gallery</div>
       </div>
     </a>
     <a href="../" class="back-btn">
@@ -653,101 +305,85 @@
 
   <!-- Desktop Navigation -->
   <div class="desktop-nav">
-    <a href="../" class="desktop-back-btn">
+    <a href="../../" class="desktop-back-btn">
       <i class="fa-solid fa-arrow-left"></i> Back to Home
     </a>
   </div>
 
   <!-- Main Content -->
-  <div class="main-container">
+  <main class="main-container">
     
-    <!-- Hero Card -->
-    <div class="hero-card">
-      <span class="hero-badge">
-        <i class="fa-solid fa-sparkles"></i> Learning Highlights
-      </span>
-      <h1 class="hero-title">MORPHEA Gallery</h1>
-      <p class="hero-subtitle">Your digital archive for class memories, materials, and learning moments. Explore your class highlights!</p>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-value">2</div>
-          <div class="hero-stat-label">Classes</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value">∞</div>
-          <div class="hero-stat-label">Memories</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value">24/7</div>
-          <div class="hero-stat-label">Access</div>
-        </div>
-      </div>
+    <div class="section-header">
+      <h1>Class 8 Archives</h1>
+      <p>Learning materials & classroom memories</p>
     </div>
 
-    <!-- Class Selection -->
-    <h3 class="section-title"><i class="fa-solid fa-folder-open"></i> Select Your Class</h3>
-    <div class="class-grid">
+    <div class="cards-grid">
       
-      <!-- Class 8 Card -->
-      <a href="./kelas-8/index.html" class="class-card">
-        <div class="class-icon">
-          <i class="fa-solid fa-photo-video"></i>
+      <!-- Learning Materials Card -->
+      <a href="https://azhibnmjkfr.github.io/perangkat-ajar-kelas-8/" target="_blank" class="card">
+        <div class="card-icon">
+          <i class="fas fa-book-open"></i>
         </div>
-        <div class="class-content">
-          <div class="class-title">Kelas 8</div>
-          <div class="class-desc">Class 8 Memories & Materials</div>
+        <div class="card-content">
+          <div class="card-title">
+            Learning Materials
+            <span class="badge">PDF</span>
+          </div>
+          <div class="card-desc">Modules, worksheets & presentations</div>
         </div>
-        <span class="class-badge">AZH</span>
-        <div class="class-arrow">
+        <div class="card-arrow">
           <i class="fa-solid fa-chevron-right"></i>
         </div>
       </a>
 
-      <!-- Class 9 Card -->
-      <a href="./kelas-9/index.html" class="class-card">
-        <div class="class-icon">
-          <i class="fa-solid fa-graduation-cap"></i>
+      <!-- Class Gallery Card -->
+      <a href="https://drive.google.com/drive/folders/1tMly9o54FpmWfozqXK5aI_bPMMYivzvz?usp=sharing" target="_blank" class="card">
+        <div class="card-icon">
+          <i class="fas fa-images"></i>
         </div>
-        <div class="class-content">
-          <div class="class-title">Kelas 9</div>
-          <div class="class-desc">Class 9 Memories & Materials</div>
+        <div class="card-content">
+          <div class="card-title">
+            Class Gallery
+            <span class="badge">Photos</span>
+          </div>
+          <div class="card-desc">Classroom moments & activities</div>
         </div>
-        <span class="class-badge">AZH</span>
-        <div class="class-arrow">
+        <div class="card-arrow">
           <i class="fa-solid fa-chevron-right"></i>
         </div>
       </a>
 
     </div>
 
-  </div>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>&copy; 2025 <strong>MORPHEA - Digital Classroom Archive</strong>. All Rights Reserved.</p>
-    <p class="footer-version">Created by Ahmad Zaman Huri, S.Pd. • MTsT Daarut Tahfizh Al-Ikhlas</p>
+    <p>© 2025 <strong>Morphea</strong> • MTsT Daarut Tahfizh Al-Ikhlas</p>
+    <p>Ahmad Zaman Huri, S.Pd.</p>
   </footer>
 
-  <!-- Bottom Navigation - Links dengan relative path -->
+  <!-- Bottom Navigation -->
   <nav class="bottom-nav">
     <div class="bottom-nav-inner">
-      <a href="../" class="nav-item">
+      <a href="../../" class="nav-item">
         <i class="fa-solid fa-home"></i>
         <span>Home</span>
       </a>
-      <a href="../jurnal/" class="nav-item">
+      <a href="../../jurnal/" class="nav-item">
         <i class="fa-solid fa-book-open"></i>
         <span>Jurnal</span>
       </a>
-      <a href="./" class="nav-item active">
+      <a href="../../morphea/" class="nav-item active">
         <i class="fa-solid fa-images"></i>
         <span>Morphea</span>
       </a>
-      <a href="../ess/" class="nav-item highlight">
+      <a href="../../ess/" class="nav-item highlight">
         <i class="fa-solid fa-graduation-cap"></i>
         <span>ESS</span>
       </a>
-      <a href="../assessment/" class="nav-item">
+      <a href="../../assessment/" class="nav-item">
         <i class="fa-solid fa-file-alt"></i>
         <span>Assess</span>
       </a>
@@ -755,8 +391,8 @@
   </nav>
 
   <!-- WhatsApp FAB -->
-  <a href="https://wa.me/6282246077307?text=Salam%2C%20saya%20terkait%20MORPHEA" target="_blank" class="fab" title="Contact Support">
-    <i class="fa-brands fa-whatsapp"></i>
+  <a href="https://wa.me/6282246077307?text=Salam%2C%20saya%20ingin%20bertanya%20tentang%20materi%20Kelas%208%20MORPHEA" target="_blank" class="fab">
+    <i class="fab fa-whatsapp"></i>
   </a>
 
 </body>
