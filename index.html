@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>EduPortal | English Department Hub</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,6 +90,9 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
         }
 
         .mobile-header-logo {
@@ -102,6 +105,12 @@
             justify-content: center;
             font-size: 1.25rem;
             color: var(--accent);
+            transition: all 0.2s ease;
+        }
+
+        .mobile-header-left:hover .mobile-header-logo {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.02);
         }
 
         .mobile-header-title {
@@ -116,21 +125,6 @@
             opacity: 0.8;
             font-weight: 400;
             letter-spacing: 0.3px;
-        }
-
-        /* --- Page Container --- */
-        .page {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* --- HOME PAGE --- */
@@ -307,7 +301,7 @@
             margin: 0;
         }
 
-        /* Features Grid */
+        /* Features Grid - Non-clickable cards dengan layout simetris */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -322,9 +316,13 @@
             text-align: center;
             border: 1px solid var(--card-border);
             transition: all 0.25s ease;
-            text-decoration: none;
-            color: inherit;
+            cursor: default;
             display: block;
+        }
+
+        /* Card full width untuk ESS (span 2 kolom) */
+        .feature-item.full-width {
+            grid-column: span 2;
         }
 
         .feature-item:hover {
@@ -343,6 +341,11 @@
             font-size: 1.1rem;
             color: var(--primary);
             margin: 0 auto 0.65rem auto;
+            transition: all 0.25s ease;
+        }
+
+        .feature-item:hover .feature-icon {
+            transform: scale(1.05);
         }
 
         /* ESS Feature Highlight */
@@ -446,9 +449,10 @@
             text-align: center;
             padding: 1.25rem 1rem;
             color: var(--text-muted);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             border-top: 1px solid rgba(0,0,0,0.04);
             background: var(--card-bg);
+            margin-top: 0.5rem;
         }
 
         .footer strong {
@@ -457,118 +461,7 @@
 
         .footer-version {
             margin-top: 0.35rem;
-            opacity: 0.6;
-        }
-
-        /* --- ASSESSMENT PAGE --- */
-        .assessment-container {
-            padding: 1.5rem 1.25rem;
-        }
-
-        .assessment-header {
-            margin-bottom: 1.5rem;
-        }
-
-        .assessment-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--primary) 0%, #1a351d 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            margin-bottom: 1rem;
-            box-shadow: 0 6px 20px rgba(35, 70, 38, 0.2);
-        }
-
-        .assessment-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .assessment-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 0.4rem;
-            line-height: 1.65;
-        }
-
-        /* Assessment Buttons */
-        .assessment-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .assessment-btn {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 1.25rem;
-            border: 1px solid var(--card-border);
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.25s ease;
-        }
-
-        .assessment-btn:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .assessment-btn-icon {
-            width: 52px;
-            height: 52px;
-            background: rgba(35, 70, 38, 0.08);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            color: var(--primary);
-            flex-shrink: 0;
-            transition: all 0.25s ease;
-        }
-
-        .assessment-btn:hover .assessment-btn-icon {
-            background: var(--primary);
-            color: white;
-        }
-
-        .assessment-btn-content {
-            flex: 1;
-        }
-
-        .assessment-btn-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.15rem;
-        }
-
-        .assessment-btn-desc {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .assessment-btn-arrow {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            transition: transform 0.25s ease;
-        }
-
-        .assessment-btn:hover .assessment-btn-arrow {
-            transform: translateX(3px);
-            color: var(--accent);
+            opacity: 0.8;
         }
 
         /* --- BOTTOM NAVIGATION --- */
@@ -696,9 +589,9 @@
 
     <div class="bg-pattern"></div>
 
-    <!-- Mobile Header -->
+    <!-- Mobile Header - Logo bisa diklik ke Home -->
     <header class="mobile-header">
-        <div class="mobile-header-left">
+        <a href="./" class="mobile-header-left" style="text-decoration: none; color: white;">
             <div class="mobile-header-logo">
                 <i class="fa-solid fa-graduation-cap"></i>
             </div>
@@ -706,220 +599,144 @@
                 <div class="mobile-header-title">EduPortal</div>
                 <div class="mobile-header-subtitle">English Department</div>
             </div>
-        </div>
+        </a>
     </header>
 
-    <!-- Page: Home -->
-    <div class="page active" id="page-home">
-        <div class="home-container">
-            
-            <!-- Greeting -->
-            <div class="greeting-section">
-                <div class="greeting-time" id="greeting-time">Good Morning</div>
-                <div class="greeting-name">Ahmad Zaman Huri, S.Pd.</div>
-                <div class="greeting-role">English Teacher • MTsT Daarut Tahfizh Al-Ikhlas</div>
-            </div>
+    <!-- Main Content - Home Page -->
+    <div class="home-container">
+        
+        <!-- Greeting -->
+        <div class="greeting-section">
+            <div class="greeting-time" id="greeting-time">Good Morning</div>
+            <div class="greeting-name">Ahmad Zaman Huri, S.Pd.</div>
+            <div class="greeting-role">English Teacher • MTsT Daarut Tahfizh Al-Ikhlas</div>
+        </div>
 
-            <!-- Hero Card -->
-            <div class="hero-card">
-                <span class="hero-badge">
-                    <i class="fa-solid fa-sparkles"></i> Welcome to EduPortal
-                </span>
-                <h2 class="hero-title">Your Digital Command Center</h2>
-                <p class="hero-subtitle">One-stop platform for classroom management, student assessment, and academic tracking.</p>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">4</div>
-                        <div class="hero-stat-label">Features</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">24/7</div>
-                        <div class="hero-stat-label">Access</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">100%</div>
-                        <div class="hero-stat-label">Paperless</div>
-                    </div>
+        <!-- Hero Card -->
+        <div class="hero-card">
+            <span class="hero-badge">
+                <i class="fa-solid fa-sparkles"></i> Welcome to EduPortal
+            </span>
+            <h2 class="hero-title">Your Digital Command Center</h2>
+            <p class="hero-subtitle">One-stop platform for classroom management, student assessment, and academic tracking.</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value">3</div>
+                    <div class="hero-stat-label">Features</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">24/7</div>
+                    <div class="hero-stat-label">Access</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">100%</div>
+                    <div class="hero-stat-label">Paperless</div>
                 </div>
             </div>
+        </div>
 
-            <!-- About EduPortal -->
-            <div class="about-section">
-                <h3 class="section-title"><i class="fa-solid fa-circle-info"></i> About EduPortal</h3>
-                <div class="about-card">
+        <!-- About EduPortal -->
+        <div class="about-section">
+            <h3 class="section-title"><i class="fa-solid fa-circle-info"></i> About EduPortal</h3>
+            <div class="about-card">
+                <p class="about-text">
+                    <strong>EduPortal</strong> is a comprehensive digital platform designed for the English Department at MTsT Daarut Tahfizh Al-Ikhlas. It transforms traditional workflows into streamlined digital experiences.
+                </p>
+                <div class="about-highlight">
                     <p class="about-text">
-                        <strong>EduPortal</strong> is a comprehensive digital platform designed for the English Department at MTsT Daarut Tahfizh Al-Ikhlas. It transforms traditional workflows into streamlined digital experiences.
+                        <i class="fa-solid fa-bullseye" style="color: var(--accent); margin-right: 0.4rem;"></i>
+                        <strong>Mission:</strong> Empowering educators with intuitive tools to enhance teaching efficiency and track student progress.
                     </p>
-                    <div class="about-highlight">
-                        <p class="about-text">
-                            <i class="fa-solid fa-bullseye" style="color: var(--accent); margin-right: 0.4rem;"></i>
-                            <strong>Mission:</strong> Empowering educators with intuitive tools to enhance teaching efficiency and track student progress.
-                        </p>
-                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Features Grid -->
-            <h3 class="section-title"><i class="fa-solid fa-grid-2"></i> Features</h3>
-            <div class="features-grid">
-                <a href="https://azhibnmjkfr.github.io/epmobile/jurnal/" class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-book-open"></i>
-                    </div>
-                    <div class="feature-title">Jurnal Kelas</div>
-                    <div class="feature-desc">Teaching logs & attendance</div>
-                </a>
-                <a href="https://azhibnmjkfr.github.io/epmobile/morphea/" class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-images"></i>
-                    </div>
-                    <div class="feature-title">Morphea</div>
-                    <div class="feature-desc">Class photo gallery</div>
-                </a>
-                <a href="https://azhibnmjkfr.github.io/epmobile/ess/" class="feature-item highlight">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <div class="feature-title">ESS</div>
-                    <div class="feature-desc">Student score analytics</div>
-                </a>
-                <a href="#" class="feature-item" onclick="showAssessmentPage(); return false;">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-file-alt"></i>
-                    </div>
-                    <div class="feature-title">Assessment</div>
-                    <div class="feature-desc">PTS & PAS management</div>
-                </a>
+        <!-- Features Grid - Non-clickable cards dengan layout simetris -->
+        <h3 class="section-title"><i class="fa-solid fa-grid-2"></i> Features</h3>
+        <div class="features-grid">
+            <!-- Jurnal Kelas Card -->
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <div class="feature-title">Jurnal Kelas</div>
+                <div class="feature-desc">Teaching logs & attendance</div>
             </div>
-
-            <!-- About Me Section -->
-            <div class="about-me-section">
-                <h3 class="section-title"><i class="fa-solid fa-user"></i> About Me</h3>
-                <a href="https://s.id/azhibnmjkfr" target="_blank" class="about-me-card">
-                    <div class="about-me-avatar">
-                        <i class="fa-solid fa-user-tie"></i>
-                    </div>
-                    <div class="about-me-content">
-                        <div class="about-me-name">Ahmad Zaman Huri, S.Pd.</div>
-                        <div class="about-me-role">English Teacher • Content Creator</div>
-                        <div class="about-me-link">
-                            <i class="fa-solid fa-link"></i> s.id/azhibnmjkfr
-                        </div>
-                    </div>
-                    <div class="about-me-arrow">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                </a>
+            
+            <!-- Morphea Card -->
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-images"></i>
+                </div>
+                <div class="feature-title">Morphea</div>
+                <div class="feature-desc">Class photo gallery</div>
             </div>
+            
+            <!-- ESS Card - Full Width (span 2 kolom) -->
+            <div class="feature-item highlight full-width">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="feature-title">ESS</div>
+                <div class="feature-desc">Electronic Student Score • Comprehensive analytics & reporting</div>
+            </div>
+        </div>
 
+        <!-- About Me Section -->
+        <div class="about-me-section">
+            <h3 class="section-title"><i class="fa-solid fa-user"></i> About Me</h3>
+            <a href="https://s.id/azhibnmjkfr" target="_blank" class="about-me-card">
+                <div class="about-me-avatar">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <div class="about-me-content">
+                    <div class="about-me-name">Ahmad Zaman Huri, S.Pd.</div>
+                    <div class="about-me-role">English Teacher • Content Creator</div>
+                    <div class="about-me-link">
+                        <i class="fa-solid fa-link"></i> s.id/azhibnmjkfr
+                    </div>
+                </div>
+                <div class="about-me-arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </a>
         </div>
 
         <!-- Footer -->
         <footer class="footer">
             <p>&copy; 2025 <strong>Paperless School Initiative</strong>. All Rights Reserved.</p>
-            <p class="footer-version">EduPortal v1.0 • MTsT Daarut Tahfizh Al-Ikhlas</p>
+            <p class="footer-version">EduPortal v1.0 • Ahmad Zaman Huri • MTsT Daarut Tahfizh Al-Ikhlas</p>
         </footer>
     </div>
 
-    <!-- Page: Assessment -->
-    <div class="page" id="page-assessment">
-        <div class="assessment-container">
-            <div class="assessment-header">
-                <div class="assessment-icon">
-                    <i class="fa-solid fa-file-alt"></i>
-                </div>
-                <h2 class="assessment-title">Assessment</h2>
-                <p class="assessment-desc">Student evaluation management for Mid-Term (PTS) and Final Semester (PAS) assessments.</p>
-            </div>
-
-            <div class="assessment-buttons">
-                <!-- PTS Button -->
-                <a href="https://azhibnmjkfr.github.io/epmobile/assesment/pts/" class="assessment-btn">
-                    <div class="assessment-btn-icon">
-                        <i class="fa-solid fa-file-contract"></i>
-                    </div>
-                    <div class="assessment-btn-content">
-                        <div class="assessment-btn-title">PTS Dashboard</div>
-                        <div class="assessment-btn-desc">Penilaian Tengah Semester • Mid-Term Assessment</div>
-                    </div>
-                    <div class="assessment-btn-arrow">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                </a>
-
-                <!-- PAS Button -->
-                <a href="#" class="assessment-btn">
-                    <div class="assessment-btn-icon">
-                        <i class="fa-solid fa-file-signature"></i>
-                    </div>
-                    <div class="assessment-btn-content">
-                        <div class="assessment-btn-title">PAS Dashboard</div>
-                        <div class="assessment-btn-desc">Penilaian Akhir Semester • Final Assessment</div>
-                    </div>
-                    <div class="assessment-btn-arrow">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bottom Navigation -->
+    <!-- Bottom Navigation - 4 menu: Home, Jurnal, Morphea, ESS -->
     <nav class="bottom-nav">
         <div class="bottom-nav-inner">
-            <a href="https://azhibnmjkfr.github.io/epmobile/" class="nav-item active" id="nav-home">
+            <a href="./" class="nav-item active">
                 <i class="fa-solid fa-home"></i>
                 <span>Home</span>
             </a>
-            <a href="https://azhibnmjkfr.github.io/epmobile/jurnal/" class="nav-item" id="nav-jurnal">
+            <a href="./jurnal/" class="nav-item">
                 <i class="fa-solid fa-book-open"></i>
                 <span>Jurnal</span>
             </a>
-            <a href="https://azhibnmjkfr.github.io/epmobile/morphea/" class="nav-item" id="nav-morphea">
+            <a href="./morphea/" class="nav-item">
                 <i class="fa-solid fa-images"></i>
                 <span>Morphea</span>
             </a>
-            <a href="https://azhibnmjkfr.github.io/epmobile/ess/" class="nav-item highlight" id="nav-ess">
+            <a href="./ess/" class="nav-item highlight">
                 <i class="fa-solid fa-graduation-cap"></i>
                 <span>ESS</span>
-            </a>
-            <a href="#" class="nav-item" id="nav-assessment" onclick="showAssessmentPage(); return false;">
-                <i class="fa-solid fa-file-alt"></i>
-                <span>Assessment</span>
             </a>
         </div>
     </nav>
 
     <!-- WhatsApp FAB -->
-    <a href="https://wa.me/6282246077307?text=Hello%20Mr.%20Ahmad,%20I%20need%20assistance%20with%20the%20Digital%20Hub." target="_blank" class="fab" title="Contact Support">
+    <a href="https://wa.me/6282246077307?text=Hello%20Mr.%20Ahmad,%20I%20need%20assistance%20with%20EduPortal." target="_blank" class="fab" title="Contact Support">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <script>
-        // --- Navigation Logic ---
-        const pages = document.querySelectorAll('.page');
-        const navItems = document.querySelectorAll('.nav-item');
-
-        function showAssessmentPage() {
-            pages.forEach(page => page.classList.remove('active'));
-            document.getElementById('page-assessment').classList.add('active');
-            
-            navItems.forEach(nav => nav.classList.remove('active'));
-            document.getElementById('nav-assessment').classList.add('active');
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function showHomePage() {
-            pages.forEach(page => page.classList.remove('active'));
-            document.getElementById('page-home').classList.add('active');
-            
-            navItems.forEach(nav => nav.classList.remove('active'));
-            document.getElementById('nav-home').classList.add('active');
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
         // --- Dynamic Greeting ---
         function updateGreeting() {
             const hour = new Date().getHours();
