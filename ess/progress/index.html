@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Class Progress | ESS - EduPortal</title>
+  <meta name="theme-color" content="#234626">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #234626;
+      --primary-dark: #1a351d;
+      --accent: #D4AF37;
+      --accent-hover: #b5952f;
+      --bg-color: #F8FAFC;
+      --text-main: #1E293B;
+      --text-muted: #64748B;
+      --white: #FFFFFF;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --card-border: rgba(35, 70, 38, 0.08);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 12px rgba(35, 70, 38, 0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding-bottom: 85px;
+    }
+
+    .bg-pattern {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+      background-color: var(--bg-color);
+      background-image: 
+        repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(35, 70, 38, 0.02) 30px, rgba(35, 70, 38, 0.02) 31px),
+        repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(35, 70, 38, 0.015) 30px, rgba(35, 70, 38, 0.015) 31px),
+        radial-gradient(at 0% 0%, rgba(35, 70, 38, 0.04) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(212, 175, 55, 0.04) 0px, transparent 50%);
+    }
+
+    /* Mobile Header */
+    .mobile-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.9rem 1.25rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-header-left { 
+      display: flex; align-items: center; gap: 0.7rem;
+      text-decoration: none; color: white;
+    }
+
+    .mobile-header-logo {
+      width: 38px; height: 38px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: var(--accent);
+      transition: all 0.2s ease;
+    }
+
+    .mobile-header-left:hover .mobile-header-logo {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .mobile-header-title { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; }
+    .mobile-header-subtitle { font-size: 0.65rem; opacity: 0.8; }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      text-decoration: none; color: white; font-weight: 500; font-size: 0.8rem;
+      padding: 0.4rem 0.75rem; background: rgba(255, 255, 255, 0.15);
+      border-radius: 40px; transition: all 0.2s ease;
+    }
+    .back-btn:hover { background: var(--accent); color: var(--primary); transform: translateX(-2px); }
+
+    /* Desktop Navigation */
+    .desktop-nav { display: none; }
+    .desktop-back-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      text-decoration: none; color: var(--primary); font-weight: 500; font-size: 0.85rem;
+      padding: 0.5rem 1rem; background: white; border-radius: 40px;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--card-border);
+      transition: all 0.2s ease;
+    }
+    .desktop-back-btn:hover { transform: translateX(-3px); border-color: var(--accent); color: var(--accent); }
+
+    /* Main Container */
+    .main-container {
+      padding: 1rem 1rem 2rem 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Page Header */
+    .page-header {
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .page-header h1 i {
+      color: var(--accent);
+    }
+    .page-header p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Stats Cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 0.8rem 0.5rem;
+      text-align: center;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.5rem;
+      color: white;
+      font-size: 0.8rem;
+    }
+    .stat-value {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .stat-label {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Table - Clean & Uniform */
+    .table-container {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+    .table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.7rem;
+      min-width: 700px;
+    }
+    th {
+      background: var(--primary);
+      color: white;
+      padding: 0.7rem 0.4rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.65rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    td {
+      padding: 0.6rem 0.4rem;
+      text-align: center;
+      border-bottom: 1px solid var(--card-border);
+      color: var(--text-main);
+      font-size: 0.7rem;
+      background: white;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:hover td {
+      background: rgba(35, 70, 38, 0.03);
+    }
+    .total-row {
+      background: var(--primary);
+      border-top: 2px solid var(--accent);
+    }
+    .total-row td {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      border-bottom: none;
+    }
+    .badge-avg {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+    .avg-good {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .avg-warning {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+    .avg-neutral {
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .status-excellent {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .status-good {
+      background: #fef9c3;
+      color: #854d0e;
+    }
+    .status-improvement {
+      background: #ffedd5;
+      color: #9a3412;
+    }
+    .status-critical {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+    .status-waiting {
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+    .remedial-num {
+      color: #b91c1c;
+      font-weight: 600;
+    }
+    .passed-num {
+      color: #15803d;
+      font-weight: 600;
+    }
+    .last-update {
+      text-align: center;
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      color: var(--text-muted);
+      font-size: 0.65rem;
+      border-top: 1px solid rgba(0,0,0,0.04);
+      background: var(--card-bg);
+      margin-top: 1.5rem;
+    }
+    .footer strong { color: var(--primary); }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: white;
+      padding: 0.45rem 0.35rem calc(0.45rem + env(safe-area-inset-bottom));
+      box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+      border-top: 1px solid var(--card-border);
+    }
+    .bottom-nav-inner {
+      display: flex; justify-content: space-around; align-items: center;
+      max-width: 500px; margin: 0 auto;
+    }
+    .nav-item {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 0.35rem 0.4rem;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text-muted);
+      min-width: 44px;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .nav-item i { font-size: 1rem; margin-bottom: 0.1rem; }
+    .nav-item span { font-size: 0.5rem; font-weight: 500; }
+    .nav-item.active { color: var(--primary); background: rgba(35, 70, 38, 0.08); }
+    .nav-item.active::before {
+      content: ''; position: absolute; top: -2px; left: 50%;
+      transform: translateX(-50%); width: 20px; height: 2px;
+      background: var(--accent); border-radius: 2px;
+    }
+
+    /* WhatsApp FAB */
+    .fab {
+      position: fixed; bottom: 85px; right: 1rem;
+      width: 44px; height: 44px; background: #25D366; color: white;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; box-shadow: 0 2px 10px rgba(37, 211, 102, 0.3);
+      z-index: 100; transition: transform 0.2s ease; text-decoration: none;
+    }
+    .fab:hover { transform: scale(1.05); }
+
+    /* Loading Spinner */
+    .loading-spinner {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--card-border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Desktop */
+    @media (min-width: 769px) {
+      .mobile-header { display: none; }
+      .bottom-nav { display: none; }
+      .fab { bottom: 1.5rem; right: 1.5rem; width: 48px; height: 48px; font-size: 1.3rem; }
+      body { padding-bottom: 0; }
+      .desktop-nav { display: block; max-width: 1000px; margin: 0 auto; padding: 1rem 1rem 0 1rem; }
+      .main-container { max-width: 1000px; padding: 1rem 1rem 2rem 1rem; }
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav { display: none; }
+      .stats-grid { gap: 0.5rem; }
+      .stat-card { padding: 0.6rem 0.3rem; }
+      .stat-value { font-size: 0.9rem; }
+      th, td { padding: 0.5rem 0.3rem; font-size: 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-pattern"></div>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <a href="../../" class="mobile-header-left" style="text-decoration: none; color: white;">
+      <div class="mobile-header-logo">
+        <i class="fa-solid fa-chart-line"></i>
+      </div>
+      <div>
+        <div class="mobile-header-title">Class Progress</div>
+        <div class="mobile-header-subtitle">Analisis Perkembangan Kelas</div>
+      </div>
+    </a>
+    <a href="../" class="back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+  </header>
+
+  <!-- Desktop Navigation -->
+  <div class="desktop-nav">
+    <a href="../../" class="desktop-back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Back to Home
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    
+    <div class="page-header">
+      <h1><i class="fas fa-chart-line"></i> Class Progress</h1>
+      <p>Overall Academic Trajectory Analysis</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-school"></i></div>
+        <div class="stat-value" id="totalClasses">-</div>
+        <div class="stat-label">Total Kelas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
+        <div class="stat-value" id="totalStudents">-</div>
+        <div class="stat-label">Total Siswa</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-sync"></i></div>
+        <div class="stat-value" id="lastUpdate" style="font-size:0.8rem;">-</div>
+        <div class="stat-label">Last Sync</div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-container">
+      <div class="table-wrapper">
+        <table id="progressTable">
+          <thead>
+            <tr>
+              <th>Kelas</th>
+              <th>Siswa</th>
+              <th>Avg PTS</th>
+              <th>Avg PAS</th>
+              <th>Avg Daily</th>
+              <th>PTS Remed</th>
+              <th>PTS Lulus</th>
+              <th>PAS Remed</th>
+              <th>PAS Lulus</th>
+              <th>Status</th>
+            </thead>
+          <tbody id="tableBody">
+            <tr>
+              <td colspan="10" style="text-align:center; padding: 2rem;">
+                <div class="loading-spinner"></div> Loading data...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="last-update">
+        Terakhir diperbarui: <span id="lastUpdateTime">-</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 <strong>ESS - English Scores System</strong></p>
+    <p>MTsT Daarut Tahfizh Al-Ikhlas • Ahmad Zaman Huri, S.Pd.</p>
+  </footer>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav-inner">
+      <a href="../../" class="nav-item">
+        <i class="fa-solid fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="../../jurnal/" class="nav-item">
+        <i class="fa-solid fa-book-open"></i>
+        <span>Jurnal</span>
+      </a>
+      <a href="../../morphea/" class="nav-item">
+        <i class="fa-solid fa-images"></i>
+        <span>Morphea</span>
+      </a>
+      <a href="../" class="nav-item active">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>ESS</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- WhatsApp FAB -->
+  <a href="https://wa.me/6282246077307?text=Salam%20Pak%20Ahmad,%20saya%20ingin%20bertanya%20tentang%20Class%20Progress" target="_blank" class="fab">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Google Sheets Configuration
+    const SHEET_ID = "1N-docAeezSqzkQcTk8mcPm-qMf-EisMELs_N35zAaT8";
+    const SHEET_NAME = "📈 class_progress";
+    const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_NAME)}`;
+
+    // DOM Elements
+    const tableBody = document.getElementById("tableBody");
+    const totalClassesEl = document.getElementById("totalClasses");
+    const totalStudentsEl = document.getElementById("totalStudents");
+    const lastUpdateEl = document.getElementById("lastUpdate");
+    const lastUpdateTimeEl = document.getElementById("lastUpdateTime");
+
+    let allData = [];
+
+    // Parse CSV
+    function parseCSV(csvText) {
+      const rows = [];
+      let currentRow = [];
+      let inQuotes = false;
+      let currentValue = "";
+      
+      for (let i = 0; i < csvText.length; i++) {
+        const char = csvText[i];
+        const nextChar = csvText[i + 1];
+        
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          currentRow.push(currentValue.trim());
+          currentValue = "";
+        } else if (char === '\n' && !inQuotes) {
+          currentRow.push(currentValue.trim());
+          rows.push(currentRow);
+          currentRow = [];
+          currentValue = "";
+        } else if (char === '\r' && nextChar === '\n' && !inQuotes) {
+          currentRow.push(currentValue.trim());
+          rows.push(currentRow);
+          currentRow = [];
+          currentValue = "";
+          i++;
+        } else {
+          currentValue += char;
+        }
+      }
+      
+      if (currentValue.trim() !== "" || currentRow.length > 0) {
+        currentRow.push(currentValue.trim());
+        rows.push(currentRow);
+      }
+      
+      return rows;
+    }
+
+    // Get status badge class
+    function getStatusClass(status) {
+      if (!status) return 'status-waiting';
+      const s = status.toUpperCase();
+      if (s.includes('EXCELLENT')) return 'status-excellent';
+      if (s.includes('GOOD')) return 'status-good';
+      if (s.includes('IMPROVEMENT')) return 'status-improvement';
+      if (s.includes('CRITICAL')) return 'status-critical';
+      return 'status-waiting';
+    }
+
+    // Format average value
+    function formatAverage(value) {
+      if (!value || value === 'NO DATA' || value === 'WAITING DATA' || value === '-') {
+        return '<span class="badge-avg avg-neutral">-</span>';
+      }
+      const num = parseFloat(value);
+      if (isNaN(num)) {
+        return `<span class="badge-avg avg-neutral">${value}</span>`;
+      }
+      const className = num < 75 ? 'avg-warning' : 'avg-good';
+      return `<span class="badge-avg ${className}">${num.toFixed(1)}</span>`;
+    }
+
+    // Format number
+    function formatNumber(value) {
+      if (!value || value === '-' || value === '') return '-';
+      return value;
+    }
+
+    // Load data
+    async function loadData() {
+      try {
+        const response = await fetch(SHEET_URL);
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        
+        const csv = await response.text();
+        const rows = parseCSV(csv);
+        
+        if (rows.length < 2) throw new Error("No data rows found");
+        
+        // Log header
+        console.log("Class Progress - Header row:", rows[0]);
+        
+        allData = rows.slice(1)
+          .filter(row => row.length >= 11 && row[1] && row[1].trim() !== "")
+          .map((row, idx) => {
+            if (idx === 0) {
+              console.log("Class Progress - First data row:", row);
+            }
+            return {
+              no: row[0]?.replace(/^"|"$/g, "") || "",
+              kelas: row[1]?.replace(/^"|"$/g, "") || "",
+              totalSiswa: row[2]?.replace(/^"|"$/g, "") || "0",
+              avgPTS: row[3]?.replace(/^"|"$/g, "") || "-",
+              avgPAS: row[4]?.replace(/^"|"$/g, "") || "-",
+              avgDaily: row[5]?.replace(/^"|"$/g, "") || "-",
+              ptsRemedial: row[6]?.replace(/^"|"$/g, "") || "0",
+              ptsLulus: row[7]?.replace(/^"|"$/g, "") || "0",
+              pasRemedial: row[8]?.replace(/^"|"$/g, "") || "0",
+              pasLulus: row[9]?.replace(/^"|"$/g, "") || "0",
+              status: row[10]?.replace(/^"|"$/g, "") || "Waiting"
+            };
+          });
+        
+        console.log(`Class Progress - Loaded ${allData.length} classes`);
+        
+        // Update last update time
+        const now = new Date();
+        const dateStr = now.toLocaleString('id-ID', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        lastUpdateEl.textContent = dateStr;
+        lastUpdateTimeEl.textContent = dateStr;
+        
+        renderTable();
+        
+      } catch (error) {
+        console.error("Error:", error);
+        tableBody.innerHTML = `}<td colspan="10" style="text-align:center; padding:2rem; color:red;">Gagal memuat data: ${error.message}</td>`;
+      }
+    }
+
+    // Render table
+    function renderTable() {
+      // Separate regular rows and total row
+      const regularRows = allData.filter(item => !item.kelas.includes('TOTAL') && !item.kelas.includes('AVG'));
+      const totalRow = allData.find(item => item.kelas.includes('TOTAL') || item.kelas.includes('AVG'));
+      
+      // Update stats
+      updateStats(regularRows, totalRow);
+      
+      if (regularRows.length === 0) {
+        tableBody.innerHTML = `}<td colspan="10" style="text-align:center; padding:2rem;">Tidak ada data kelas</td>`;
+        return;
+      }
+      
+      tableBody.innerHTML = "";
+      
+      // Render regular rows
+      regularRows.forEach(item => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td style="font-weight:700; color:var(--primary);">${item.kelas}</td>
+          <td>${formatNumber(item.totalSiswa)}</td>
+          <td>${formatAverage(item.avgPTS)}</td>
+          <td>${formatAverage(item.avgPAS)}</td>
+          <td>${formatAverage(item.avgDaily)}</td>
+          <td class="remedial-num">${formatNumber(item.ptsRemedial)}</td>
+          <td class="passed-num">${formatNumber(item.ptsLulus)}</td>
+          <td class="remedial-num">${formatNumber(item.pasRemedial)}</td>
+          <td class="passed-num">${formatNumber(item.pasLulus)}</td>
+          <td><span class="status-badge ${getStatusClass(item.status)}">${item.status}</span></td>
+        `;
+        tableBody.appendChild(row);
+      });
+      
+      // Render total row if exists
+      if (totalRow) {
+        const tr = document.createElement("tr");
+        tr.classList.add('total-row');
+        tr.innerHTML = `
+          <td style="font-weight:700;">${totalRow.kelas}</td>
+          <td>${formatNumber(totalRow.totalSiswa)}</td>
+          <td>${formatAverage(totalRow.avgPTS)}</td>
+          <td>${formatAverage(totalRow.avgPAS)}</td>
+          <td>${formatAverage(totalRow.avgDaily)}</td>
+          <td>${formatNumber(totalRow.ptsRemedial)}</td>
+          <td>${formatNumber(totalRow.ptsLulus)}</td>
+          <td>${formatNumber(totalRow.pasRemedial)}</td>
+          <td>${formatNumber(totalRow.pasLulus)}</td>
+          <td><span class="status-badge status-excellent" style="background:white; color:var(--primary);">${totalRow.status}</span></td>
+        `;
+        tableBody.appendChild(tr);
+      }
+    }
+
+    // Update statistics
+    function updateStats(regularRows, totalRow) {
+      totalClassesEl.textContent = regularRows.length;
+      if (totalRow && totalRow.totalSiswa) {
+        totalStudentsEl.textContent = totalRow.totalSiswa;
+      } else {
+        const total = regularRows.reduce((sum, item) => sum + (parseInt(item.totalSiswa) || 0), 0);
+        totalStudentsEl.textContent = total;
+      }
+    }
+
+    // Initialize
+    loadData();
+  </script>
+</body>
+</html>

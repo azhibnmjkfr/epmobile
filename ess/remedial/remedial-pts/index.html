@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Remedial PTS | ESS - EduPortal</title>
+  <meta name="theme-color" content="#234626">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #234626;
+      --primary-dark: #1a351d;
+      --accent: #D4AF37;
+      --accent-hover: #b5952f;
+      --bg-color: #F8FAFC;
+      --text-main: #1E293B;
+      --text-muted: #64748B;
+      --white: #FFFFFF;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --card-border: rgba(35, 70, 38, 0.08);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 12px rgba(35, 70, 38, 0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding-bottom: 85px;
+    }
+
+    .bg-pattern {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+      background-color: var(--bg-color);
+      background-image: 
+        repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(35, 70, 38, 0.02) 30px, rgba(35, 70, 38, 0.02) 31px),
+        repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(35, 70, 38, 0.015) 30px, rgba(35, 70, 38, 0.015) 31px),
+        radial-gradient(at 0% 0%, rgba(35, 70, 38, 0.04) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(212, 175, 55, 0.04) 0px, transparent 50%);
+    }
+
+    /* Mobile Header */
+    .mobile-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.9rem 1.25rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-header-left { 
+      display: flex; align-items: center; gap: 0.7rem;
+      text-decoration: none; color: white;
+    }
+
+    .mobile-header-logo {
+      width: 38px; height: 38px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: var(--accent);
+      transition: all 0.2s ease;
+    }
+
+    .mobile-header-left:hover .mobile-header-logo {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .mobile-header-title { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; }
+    .mobile-header-subtitle { font-size: 0.65rem; opacity: 0.8; }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      text-decoration: none; color: white; font-weight: 500; font-size: 0.8rem;
+      padding: 0.4rem 0.75rem; background: rgba(255, 255, 255, 0.15);
+      border-radius: 40px; transition: all 0.2s ease;
+    }
+    .back-btn:hover { background: var(--accent); color: var(--primary); transform: translateX(-2px); }
+
+    /* Desktop Navigation */
+    .desktop-nav { display: none; }
+    .desktop-back-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      text-decoration: none; color: var(--primary); font-weight: 500; font-size: 0.85rem;
+      padding: 0.5rem 1rem; background: white; border-radius: 40px;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--card-border);
+      transition: all 0.2s ease;
+    }
+    .desktop-back-btn:hover { transform: translateX(-3px); border-color: var(--accent); color: var(--accent); }
+
+    /* Main Container */
+    .main-container {
+      padding: 1rem 1rem 2rem 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Page Header */
+    .page-header {
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .page-header h1 i {
+      color: var(--accent);
+    }
+    .page-header p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Stats Cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 0.8rem 0.5rem;
+      text-align: center;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.5rem;
+      color: white;
+      font-size: 0.8rem;
+    }
+    .stat-value {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .stat-label {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Filter Section */
+    .filter-section {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--card-border);
+    }
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .filter-select {
+      flex: 1;
+      min-width: 100px;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      font-size: 0.75rem;
+      background: var(--white);
+      color: var(--text-main);
+    }
+    .reset-btn {
+      width: 100%;
+      padding: 0.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .reset-btn:hover {
+      background: var(--accent);
+      color: var(--primary);
+    }
+
+    /* Table */
+    .table-container {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+    .table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.7rem;
+      min-width: 650px;
+    }
+    th {
+      background: var(--primary);
+      color: white;
+      padding: 0.7rem 0.5rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.65rem;
+    }
+    td {
+      padding: 0.6rem 0.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--card-border);
+      color: var(--text-main);
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:hover td {
+      background: rgba(35, 70, 38, 0.03);
+    }
+    .badge-class {
+      background: var(--primary);
+      color: white;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.65rem;
+    }
+    .score-before {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .score-after {
+      background: #dcfce7;
+      color: #166534;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+    .status-pass {
+      background: #dcfce7;
+      color: #15803d;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+    .status-remedial {
+      background: #ffedd5;
+      color: #c2410c;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+    .status-pending {
+      background: #f3f4f6;
+      color: #4b5563;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+    .last-update {
+      text-align: center;
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      color: var(--text-muted);
+      font-size: 0.65rem;
+      border-top: 1px solid rgba(0,0,0,0.04);
+      background: var(--card-bg);
+      margin-top: 1.5rem;
+    }
+    .footer strong { color: var(--primary); }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: white;
+      padding: 0.45rem 0.35rem calc(0.45rem + env(safe-area-inset-bottom));
+      box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+      border-top: 1px solid var(--card-border);
+    }
+    .bottom-nav-inner {
+      display: flex; justify-content: space-around; align-items: center;
+      max-width: 500px; margin: 0 auto;
+    }
+    .nav-item {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 0.35rem 0.4rem;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text-muted);
+      min-width: 44px;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .nav-item i { font-size: 1rem; margin-bottom: 0.1rem; }
+    .nav-item span { font-size: 0.5rem; font-weight: 500; }
+    .nav-item.active { color: var(--primary); background: rgba(35, 70, 38, 0.08); }
+    .nav-item.active::before {
+      content: ''; position: absolute; top: -2px; left: 50%;
+      transform: translateX(-50%); width: 20px; height: 2px;
+      background: var(--accent); border-radius: 2px;
+    }
+
+    /* WhatsApp FAB */
+    .fab {
+      position: fixed; bottom: 85px; right: 1rem;
+      width: 44px; height: 44px; background: #25D366; color: white;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; box-shadow: 0 2px 10px rgba(37, 211, 102, 0.3);
+      z-index: 100; transition: transform 0.2s ease; text-decoration: none;
+    }
+    .fab:hover { transform: scale(1.05); }
+
+    /* Loading Spinner */
+    .loading-spinner {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--card-border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Desktop */
+    @media (min-width: 769px) {
+      .mobile-header { display: none; }
+      .bottom-nav { display: none; }
+      .fab { bottom: 1.5rem; right: 1.5rem; width: 48px; height: 48px; font-size: 1.3rem; }
+      body { padding-bottom: 0; }
+      .desktop-nav { display: block; max-width: 800px; margin: 0 auto; padding: 1rem 1rem 0 1rem; }
+      .main-container { max-width: 800px; padding: 1rem 1rem 2rem 1rem; }
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav { display: none; }
+      .stats-grid { gap: 0.5rem; }
+      .stat-card { padding: 0.6rem 0.3rem; }
+      .stat-value { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-pattern"></div>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <a href="../../../" class="mobile-header-left" style="text-decoration: none; color: white;">
+      <div class="mobile-header-logo">
+        <i class="fa-solid fa-rotate-left"></i>
+      </div>
+      <div>
+        <div class="mobile-header-title">Remedial PTS</div>
+        <div class="mobile-header-subtitle">Program Perbaikan Nilai</div>
+      </div>
+    </a>
+    <a href="../../" class="back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+  </header>
+
+  <!-- Desktop Navigation -->
+  <div class="desktop-nav">
+    <a href="../../../" class="desktop-back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Back to Home
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    
+    <div class="page-header">
+      <h1><i class="fas fa-rotate-left"></i> Remedial PTS</h1>
+      <p>Program Perbaikan Nilai • Mid-Term Remedial</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-users"></i></div>
+        <div class="stat-value" id="totalStudents">-</div>
+        <div class="stat-label">Total Siswa</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="stat-value" id="averageScore">-</div>
+        <div class="stat-label">Rata-rata Hasil</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+        <div class="stat-value" id="highestScore">-</div>
+        <div class="stat-label">Tertinggi</div>
+      </div>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+      <div class="filter-group">
+        <select id="filterClass" class="filter-select">
+          <option value="">Semua Kelas</option>
+        </select>
+        <select id="filterResult" class="filter-select">
+          <option value="">Semua Status</option>
+          <option value="lulus">Lulus</option>
+          <option value="perlu-remedial">Perlu Remedial</option>
+          <option value="belum-input">Belum Input</option>
+        </select>
+      </div>
+      <button id="resetFilters" class="reset-btn">
+        <i class="fas fa-redo"></i> Reset Filter
+      </button>
+    </div>
+
+    <!-- Table -->
+    <div class="table-container">
+      <div class="table-wrapper">
+        <table id="remedialTable">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>NIS</th>
+              <th>Nama Siswa</th>
+              <th>Kelas</th>
+              <th>Tanggal</th>
+              <th>Nilai Awal</th>
+              <th>Materi</th>
+              <th>Nilai Remedial</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr>
+              <td colspan="9" style="text-align:center; padding: 2rem;">
+                <div class="loading-spinner"></div> Loading data...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="last-update">
+        Last Update: <span id="lastUpdate">-</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 <strong>ESS - English Scores System</strong></p>
+    <p>MTsT Daarut Tahfizh Al-Ikhlas • Ahmad Zaman Huri, S.Pd.</p>
+  </footer>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav-inner">
+      <a href="../../../" class="nav-item">
+        <i class="fa-solid fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="../../../jurnal/" class="nav-item">
+        <i class="fa-solid fa-book-open"></i>
+        <span>Jurnal</span>
+      </a>
+      <a href="../../../morphea/" class="nav-item">
+        <i class="fa-solid fa-images"></i>
+        <span>Morphea</span>
+      </a>
+      <a href="../../" class="nav-item active">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>ESS</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- WhatsApp FAB -->
+  <a href="https://wa.me/6282246077307?text=Salam%20Pak%20Ahmad,%20saya%20ingin%20bertanya%20tentang%20program%20Remedial%20PTS" target="_blank" class="fab">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Google Sheets Configuration
+    const SHEET_ID = "1N-docAeezSqzkQcTk8mcPm-qMf-EisMELs_N35zAaT8";
+    const SHEET_NAME = "🎯 remedial_pts";
+    const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_NAME)}`;
+
+    // DOM Elements
+    const filterClass = document.getElementById("filterClass");
+    const filterResult = document.getElementById("filterResult");
+    const resetBtn = document.getElementById("resetFilters");
+    const tableBody = document.getElementById("tableBody");
+    const totalStudentsEl = document.getElementById("totalStudents");
+    const averageScoreEl = document.getElementById("averageScore");
+    const highestScoreEl = document.getElementById("highestScore");
+    const lastUpdateEl = document.getElementById("lastUpdate");
+
+    let allData = [];
+    let currentFilterClass = "";
+    let currentFilterResult = "";
+
+    // Parse CSV with quoted values
+    function parseCSV(csvText) {
+      const rows = [];
+      let currentRow = [];
+      let inQuotes = false;
+      let currentValue = "";
+      
+      for (let i = 0; i < csvText.length; i++) {
+        const char = csvText[i];
+        const nextChar = csvText[i + 1];
+        
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          currentRow.push(currentValue.trim());
+          currentValue = "";
+        } else if (char === '\n' && !inQuotes) {
+          currentRow.push(currentValue.trim());
+          rows.push(currentRow);
+          currentRow = [];
+          currentValue = "";
+        } else if (char === '\r' && nextChar === '\n' && !inQuotes) {
+          currentRow.push(currentValue.trim());
+          rows.push(currentRow);
+          currentRow = [];
+          currentValue = "";
+          i++;
+        } else {
+          currentValue += char;
+        }
+      }
+      
+      if (currentValue.trim() !== "" || currentRow.length > 0) {
+        currentRow.push(currentValue.trim());
+        rows.push(currentRow);
+      }
+      
+      return rows;
+    }
+
+    // Get result category for filtering
+    function getResultCategory(keterangan) {
+      const val = (keterangan || "").toString().trim().toLowerCase();
+      if (val.includes("lulus")) return "lulus";
+      if (val.includes("perlu remedial")) return "perlu-remedial";
+      if (val.includes("belum input")) return "belum-input";
+      return "";
+    }
+
+    // Get status badge class
+    function getStatusBadge(keterangan) {
+      const val = (keterangan || "").toString().trim().toLowerCase();
+      if (val.includes("lulus")) {
+        return '<span class="status-pass">Lulus</span>';
+      }
+      if (val.includes("perlu remedial")) {
+        return '<span class="status-remedial">Perlu Remedial</span>';
+      }
+      if (val.includes("belum input")) {
+        return '<span class="status-pending">Belum Input</span>';
+      }
+      return `<span style="padding:2px 10px; background:#f1f5f9; border-radius:20px;">${keterangan || "-"}</span>`;
+    }
+
+    // Load data from Google Sheets
+    async function loadData() {
+      try {
+        const response = await fetch(SHEET_URL);
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        
+        const csv = await response.text();
+        const rows = parseCSV(csv);
+        
+        if (rows.length < 2) throw new Error("No data rows found");
+        
+        // Skip header row (row 0)
+        allData = rows.slice(1)
+          .filter(row => row.length >= 9 && row[0] && row[0].trim() !== "")
+          .map(row => ({
+            no: row[0]?.replace(/^"|"$/g, "") || "",
+            nis: row[1]?.replace(/^"|"$/g, "") || "",
+            nama: row[2]?.replace(/^"|"$/g, "") || "",
+            kelas: row[3]?.replace(/^"|"$/g, "") || "",
+            tanggal: row[4]?.replace(/^"|"$/g, "") || "-",
+            nilaiAwal: row[5]?.replace(/^"|"$/g, "") || "-",
+            materi: row[6]?.replace(/^"|"$/g, "") || "-",
+            nilaiHasil: row[7]?.replace(/^"|"$/g, "") || "-",
+            keterangan: row[8]?.replace(/^"|"$/g, "") || ""
+          }));
+        
+        // Populate class filter dropdown
+        const kelasSet = new Set(allData.map(item => item.kelas).filter(Boolean));
+        filterClass.innerHTML = '<option value="">Semua Kelas</option>';
+        Array.from(kelasSet).sort().forEach(k => {
+          filterClass.innerHTML += `<option value="${k}">${k}</option>`;
+        });
+        
+        // Update last update time
+        const now = new Date();
+        lastUpdateEl.textContent = now.toLocaleString('id-ID', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        
+        renderTable();
+      } catch (error) {
+        console.error("Error loading data:", error);
+        tableBody.innerHTML = `<tr><td colspan="9" style="text-align:center; padding:2rem; color:red;">Gagal memuat data. Periksa koneksi internet Anda.</td></tr>`;
+      }
+    }
+
+    // Render table with current filters
+    function renderTable() {
+      let filteredData = [...allData];
+      
+      // Filter by class
+      if (currentFilterClass) {
+        filteredData = filteredData.filter(item => item.kelas === currentFilterClass);
+      }
+      
+      // Filter by result status
+      if (currentFilterResult) {
+        filteredData = filteredData.filter(item => getResultCategory(item.keterangan) === currentFilterResult);
+      }
+      
+      // Update stats
+      updateStats(filteredData);
+      
+      // Render table rows
+      if (filteredData.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="9" style="text-align:center; padding:2rem;">Tidak ada data yang sesuai</td></tr>`;
+        return;
+      }
+      
+      tableBody.innerHTML = "";
+      filteredData.forEach((item, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td style="font-family:monospace; font-size:0.7rem;">${item.nis}</td>
+          <td style="text-align:left; font-weight:500;">${item.nama}</td>
+          <td><span class="badge-class">${item.kelas}</span></td>
+          <td style="font-size:0.7rem;">${item.tanggal}</td>
+          <td><span class="score-before">${item.nilaiAwal}</span></td>
+          <td style="text-align:left; max-width:120px; overflow:hidden; text-overflow:ellipsis;">${item.materi}</td>
+          <td><span class="score-after">${item.nilaiHasil}</span></td>
+          <td>${getStatusBadge(item.keterangan)}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Update statistics
+    function updateStats(data) {
+      const total = data.length;
+      const hasilScores = data.map(item => parseFloat(item.nilaiHasil)).filter(v => !isNaN(v) && v > 0);
+      const avg = hasilScores.length > 0 ? (hasilScores.reduce((a, b) => a + b, 0) / hasilScores.length).toFixed(1) : "-";
+      const highest = hasilScores.length > 0 ? Math.max(...hasilScores) : "-";
+      
+      totalStudentsEl.textContent = total;
+      averageScoreEl.textContent = avg;
+      highestScoreEl.textContent = highest;
+    }
+
+    // Event listeners
+    filterClass.addEventListener("change", (e) => {
+      currentFilterClass = e.target.value;
+      renderTable();
+    });
+    
+    filterResult.addEventListener("change", (e) => {
+      currentFilterResult = e.target.value;
+      renderTable();
+    });
+    
+    resetBtn.addEventListener("click", () => {
+      filterClass.value = "";
+      filterResult.value = "";
+      currentFilterClass = "";
+      currentFilterResult = "";
+      renderTable();
+    });
+
+    // Initialize
+    loadData();
+  </script>
+</body>
+</html>

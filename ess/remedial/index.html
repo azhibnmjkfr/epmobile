@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Remedial | ESS - EduPortal</title>
+  <meta name="theme-color" content="#234626">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #234626;
+      --primary-dark: #1a351d;
+      --accent: #D4AF37;
+      --accent-hover: #b5952f;
+      --bg-color: #F8FAFC;
+      --text-main: #1E293B;
+      --text-muted: #64748B;
+      --white: #FFFFFF;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --card-border: rgba(35, 70, 38, 0.08);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 12px rgba(35, 70, 38, 0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding-bottom: 85px;
+    }
+
+    .bg-pattern {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+      background-color: var(--bg-color);
+      background-image: 
+        repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(35, 70, 38, 0.02) 30px, rgba(35, 70, 38, 0.02) 31px),
+        repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(35, 70, 38, 0.015) 30px, rgba(35, 70, 38, 0.015) 31px),
+        radial-gradient(at 0% 0%, rgba(35, 70, 38, 0.04) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(212, 175, 55, 0.04) 0px, transparent 50%);
+    }
+
+    /* Mobile Header */
+    .mobile-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.9rem 1.25rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-header-left { 
+      display: flex; align-items: center; gap: 0.7rem;
+      text-decoration: none; color: white;
+    }
+
+    .mobile-header-logo {
+      width: 38px; height: 38px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: var(--accent);
+      transition: all 0.2s ease;
+    }
+
+    .mobile-header-left:hover .mobile-header-logo {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .mobile-header-title { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; }
+    .mobile-header-subtitle { font-size: 0.65rem; opacity: 0.8; }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      text-decoration: none; color: white; font-weight: 500; font-size: 0.8rem;
+      padding: 0.4rem 0.75rem; background: rgba(255, 255, 255, 0.15);
+      border-radius: 40px; transition: all 0.2s ease;
+    }
+    .back-btn:hover { background: var(--accent); color: var(--primary); transform: translateX(-2px); }
+
+    /* Desktop Navigation */
+    .desktop-nav { display: none; }
+    .desktop-back-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      text-decoration: none; color: var(--primary); font-weight: 500; font-size: 0.85rem;
+      padding: 0.5rem 1rem; background: white; border-radius: 40px;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--card-border);
+      transition: all 0.2s ease;
+    }
+    .desktop-back-btn:hover { transform: translateX(-3px); border-color: var(--accent); color: var(--accent); }
+
+    /* Main Container */
+    .main-container {
+      padding: 1rem 1rem 2rem 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Page Header */
+    .page-header {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .page-header h1 i {
+      color: var(--accent);
+    }
+    .page-header p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 1rem;
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: white;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover .card-icon {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+      transform: scale(1.02);
+    }
+
+    .card-content {
+      flex: 1;
+    }
+
+    .card-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.1rem;
+    }
+
+    .card-desc {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .card-badge {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--accent);
+      font-size: 0.6rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 0.3rem;
+    }
+
+    .card-arrow {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover .card-arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      color: var(--text-muted);
+      font-size: 0.65rem;
+      border-top: 1px solid rgba(0,0,0,0.04);
+      background: var(--card-bg);
+      margin-top: 1.5rem;
+    }
+    .footer strong { color: var(--primary); }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: white;
+      padding: 0.45rem 0.35rem calc(0.45rem + env(safe-area-inset-bottom));
+      box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+      border-top: 1px solid var(--card-border);
+    }
+    .bottom-nav-inner {
+      display: flex; justify-content: space-around; align-items: center;
+      max-width: 500px; margin: 0 auto;
+    }
+    .nav-item {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 0.35rem 0.4rem;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text-muted);
+      min-width: 44px;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .nav-item i { font-size: 1rem; margin-bottom: 0.1rem; }
+    .nav-item span { font-size: 0.5rem; font-weight: 500; }
+    .nav-item.active { color: var(--primary); background: rgba(35, 70, 38, 0.08); }
+    .nav-item.active::before {
+      content: ''; position: absolute; top: -2px; left: 50%;
+      transform: translateX(-50%); width: 20px; height: 2px;
+      background: var(--accent); border-radius: 2px;
+    }
+
+    /* WhatsApp FAB */
+    .fab {
+      position: fixed; bottom: 85px; right: 1rem;
+      width: 44px; height: 44px; background: #25D366; color: white;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; box-shadow: 0 2px 10px rgba(37, 211, 102, 0.3);
+      z-index: 100; transition: transform 0.2s ease; text-decoration: none;
+    }
+    .fab:hover { transform: scale(1.05); }
+
+    /* Desktop */
+    @media (min-width: 769px) {
+      .mobile-header { display: none; }
+      .bottom-nav { display: none; }
+      .fab { bottom: 1.5rem; right: 1.5rem; width: 48px; height: 48px; font-size: 1.3rem; }
+      body { padding-bottom: 0; }
+      .desktop-nav { display: block; max-width: 600px; margin: 0 auto; padding: 1rem 1rem 0 1rem; }
+      .main-container { max-width: 600px; padding: 1rem 1rem 2rem 1rem; }
+      .cards-grid { gap: 1.2rem; }
+      .card { padding: 1.2rem; }
+      .card-icon { width: 56px; height: 56px; font-size: 1.4rem; }
+      .card-title { font-size: 1rem; }
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-pattern"></div>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <a href="../../" class="mobile-header-left" style="text-decoration: none; color: white;">
+      <div class="mobile-header-logo">
+        <i class="fa-solid fa-rotate-left"></i>
+      </div>
+      <div>
+        <div class="mobile-header-title">Remedial</div>
+        <div class="mobile-header-subtitle">Program Perbaikan Nilai</div>
+      </div>
+    </a>
+    <a href="../" class="back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+  </header>
+
+  <!-- Desktop Navigation -->
+  <div class="desktop-nav">
+    <a href="../../" class="desktop-back-btn">
+      <i class="fa-solid fa-arrow-left"></i> Back to Home
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    
+    <div class="page-header">
+      <h1><i class="fas fa-rotate-left"></i> Remedial Program</h1>
+      <p>Program Perbaikan Nilai • Remedial Assessment</p>
+    </div>
+
+    <div class="cards-grid">
+      
+      <!-- Remedial PTS Card -->
+      <a href="./remedial-pts/" class="card">
+        <div class="card-icon">
+          <i class="fas fa-clipboard-list"></i>
+        </div>
+        <div class="card-content">
+          <div class="card-title">Remedial PTS</div>
+          <div class="card-desc">Perbaikan nilai Penilaian Tengah Semester</div>
+          <div class="card-badge">Mid-Term Remedial</div>
+        </div>
+        <div class="card-arrow">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </a>
+
+      <!-- Remedial PAS Card -->
+      <a href="./remedial-pas/" class="card">
+        <div class="card-icon">
+          <i class="fas fa-file-signature"></i>
+        </div>
+        <div class="card-content">
+          <div class="card-title">Remedial PAS</div>
+          <div class="card-desc">Perbaikan nilai Penilaian Akhir Semester</div>
+          <div class="card-badge">Final Remedial</div>
+        </div>
+        <div class="card-arrow">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </a>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 <strong>ESS - English Scores System</strong></p>
+    <p>MTsT Daarut Tahfizh Al-Ikhlas • Ahmad Zaman Huri, S.Pd.</p>
+  </footer>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav-inner">
+      <a href="../../" class="nav-item">
+        <i class="fa-solid fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="../../jurnal/" class="nav-item">
+        <i class="fa-solid fa-book-open"></i>
+        <span>Jurnal</span>
+      </a>
+      <a href="../../morphea/" class="nav-item">
+        <i class="fa-solid fa-images"></i>
+        <span>Morphea</span>
+      </a>
+      <a href="../" class="nav-item active">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>ESS</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- WhatsApp FAB -->
+  <a href="https://wa.me/6282246077307?text=Salam%20Pak%20Ahmad,%20saya%20ingin%20bertanya%20tentang%20program%20Remedial" target="_blank" class="fab">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+</body>
+</html>
